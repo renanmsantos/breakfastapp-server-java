@@ -108,6 +108,17 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <configuration>
+                    <changeLogDirectory>src/main/resources/db/changelog</changeLogDirectory>
+                    <changeLogFile>db.changelog-master.yaml</changeLogFile>
+                    <url>jdbc:postgresql://localhost:5432/breakfastapp-server-java</url>
+                    <username>postgres</username>
+                    <password>postgres</password>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

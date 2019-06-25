@@ -10,7 +10,6 @@ public class UserController {
     @RequestMapping("/users")
     @ResponseBody
     public String getUsers() {
-        return "{ \"message\": \"Hello!\"";
+        return "Hello, it's ok.";
     }
-
 }
