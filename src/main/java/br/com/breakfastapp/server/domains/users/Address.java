@@ -41,4 +41,12 @@ public class Address {
     @NotNull
     private Boolean active;
 
+    public Address(@NotNull String street, @NotNull Integer number, @NotNull String district, @NotNull String city, @NotNull String cep, @NotNull Boolean active) {
+        this.street = street;
+        this.number = number;
+        this.district = district;
+        this.city = city;
+        this.cep = cep;
+        this.active = active;
+    }
 }

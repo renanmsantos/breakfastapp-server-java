@@ -45,4 +45,16 @@ public class Product {
     @NotNull
     private Boolean active;
 
+    public Product(@NotNull String name, Float price, String urlImage, Integer daysProduce, Integer quantity, @NotNull Boolean available, @NotNull Category category, @NotNull Partner partner, @NotNull Boolean active){
+        this.name = name;
+        this.price = price;
+        this.urlImage = urlImage;
+        this.daysProduce = daysProduce;
+        this.quantity = quantity;
+        this.available = available;
+        this.category = category;
+        this.partner = partner;
+        this.active = active;
+    }
+
 }

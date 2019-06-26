@@ -35,31 +35,10 @@ public class Delivery {
     @UpdateTimestamp
     private Date updatedAt;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public DeliveryStatus getDeliveryStatus() {
-        return deliveryStatus;
-    }
-
-    public void setDeliveryStatus(DeliveryStatus deliveryStatus) {
+    public Delivery(@NotNull DeliveryStatus deliveryStatus, @NotNull LocalDateTime scheduledDate, @NotNull Address address){
         this.deliveryStatus = deliveryStatus;
-    }
-
-    public LocalDateTime getScheduledDate() {
-        return scheduledDate;
-    }
-
-    public void setScheduledDate(LocalDateTime scheduledDate) {
         this.scheduledDate = scheduledDate;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
         this.address = address;
     }
+
 }

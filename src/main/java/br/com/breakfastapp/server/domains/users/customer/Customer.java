@@ -49,4 +49,15 @@ public class Customer {
     @NotNull
     private Boolean active;
 
+    public Customer(@NotNull String name, String lastName, @NotNull String email, @NotNull String password, @NotNull String cpf, String cellphone, CustomerGroup customerGroup, GroupRole groupRole, @NotNull Boolean active) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.cpf = cpf;
+        this.cellphone = cellphone;
+        this.customerGroup = customerGroup;
+        this.groupRole = groupRole;
+        this.active = active;
+    }
 }

@@ -54,4 +54,15 @@ public class Partner {
     @NotNull
     private Boolean active;
 
+    public Partner(Integer id, String name, @NotNull String email, @NotNull String password, @NotNull String cnpj, Float deliveryFee, @NotNull String phone, @NotNull Segment segment, @NotNull Boolean active) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.cnpj = cnpj;
+        this.deliveryFee = deliveryFee;
+        this.phone = phone;
+        this.segment = segment;
+        this.active = active;
+    }
 }

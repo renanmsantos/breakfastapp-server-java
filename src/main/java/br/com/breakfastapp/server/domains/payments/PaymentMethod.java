@@ -30,4 +30,10 @@ public class PaymentMethod {
 
     @NotNull
     private Boolean active;
+
+    public PaymentMethod(@NotNull String name, String description, @NotNull Boolean active){
+        this.name = name;
+        this.description = description;
+        this.active = active;
+    }
 }

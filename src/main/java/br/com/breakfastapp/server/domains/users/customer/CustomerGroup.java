@@ -31,4 +31,9 @@ public class CustomerGroup {
     @NotNull
     private Boolean active;
 
+    public CustomerGroup(@NotNull String name, String description, @NotNull Boolean active) {
+        this.name = name;
+        this.description = description;
+        this.active = active;
+    }
 }

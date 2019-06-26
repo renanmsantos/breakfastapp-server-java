@@ -19,6 +19,7 @@ public class Category {
 
     @NotNull
     private String name;
+
     private String description;
 
     @CreationTimestamp
@@ -29,5 +30,11 @@ public class Category {
 
     @NotNull
     private Boolean active;
+
+    public Category(@NotNull String name, String description, @NotNull Boolean active){
+        this.name = name;
+        this.description = description;
+        this.active = active;
+    }
 
 }

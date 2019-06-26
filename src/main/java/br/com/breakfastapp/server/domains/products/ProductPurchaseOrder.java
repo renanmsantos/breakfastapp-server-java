@@ -33,4 +33,11 @@ public class ProductPurchaseOrder {
     @UpdateTimestamp
     private Date updatedAt;
 
+    public ProductPurchaseOrder(Integer quantity, @NotNull Product product, @NotNull PurchaseOrder purchaseOrder) {
+        this.quantity = quantity;
+        this.product = product;
+        this.purchaseOrder = purchaseOrder;
+    }
+
+
 }

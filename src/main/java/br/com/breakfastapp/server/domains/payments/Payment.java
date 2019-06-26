@@ -31,4 +31,9 @@ public class Payment {
     @UpdateTimestamp
     private Date updatedAt;
 
+    public Payment(@NotNull PaymentStatus paymentStatus, @NotNull PurchaseOrder purchaseOrder){
+        this.paymentStatus = paymentStatus;
+        this.purchaseOrder = purchaseOrder;
+    }
+
 }
