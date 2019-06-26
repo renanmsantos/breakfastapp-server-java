@@ -31,7 +31,6 @@ public class Evaluation {
     @NotNull
     private Integer gradeProduct;
 
-    @NotNull
     private String comments;
 
     private LocalDateTime createdAt;

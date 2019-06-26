@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,8 +17,10 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private EnumPaymentStatus status;
+    @NotNull
+    private EnumPaymentStatus paymentStatus;
 
+    @NotNull
     private Order order;
 
     private LocalDateTime createdAt;

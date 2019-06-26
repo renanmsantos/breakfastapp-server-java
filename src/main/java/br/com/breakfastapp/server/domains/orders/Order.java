@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -17,9 +18,15 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private EnumOrderStatus status;
+    @NotNull
+    private EnumOrderStatus orderStatus;
+
+    @NotNull
     private Customer customer;
+
+    @NotNull
     private Partner partner;
+
     private Delivery delivery;
 
     private LocalDateTime createdAt;

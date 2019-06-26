@@ -18,7 +18,7 @@ public class Delivery {
     private Integer id;
 
     @NotNull
-    private EnumDeliveryStatus status;
+    private EnumDeliveryStatus deliveryStatus;
 
     @NotNull
     private LocalDateTime scheduledDate;

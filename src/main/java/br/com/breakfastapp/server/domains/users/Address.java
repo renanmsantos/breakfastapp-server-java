@@ -18,10 +18,18 @@ public class Address {
     @NotNull
     private String street;
 
+    @NotNull
     private Integer number;
+
+    @NotNull
     private String district;
+
+    @NotNull
     private String city;
+
+    @NotNull
     private String cep;
+
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
