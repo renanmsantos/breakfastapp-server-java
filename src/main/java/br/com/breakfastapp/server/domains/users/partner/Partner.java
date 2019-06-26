@@ -54,6 +54,8 @@ public class Partner {
     @NotNull
     private Boolean active;
 
+    public Partner(){}
+
     public Partner(Integer id, String name, @NotNull String email, @NotNull String password, @NotNull String cnpj, Float deliveryFee, @NotNull String phone, @NotNull Segment segment, @NotNull Boolean active) {
         this.id = id;
         this.name = name;

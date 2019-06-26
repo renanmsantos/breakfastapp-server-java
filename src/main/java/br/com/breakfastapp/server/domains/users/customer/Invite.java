@@ -40,6 +40,8 @@ public class Invite {
     @UpdateTimestamp
     private Date updatedAt;
 
+    public Invite() {}
+
     public Invite(@NotNull String guestName, @NotNull String guestEmail, InviteStatus inviteStatus, @NotNull Customer invitedByCustomer, @NotNull CustomerGroup invitedToCustomerGroup) {
         this.guestName = guestName;
         this.guestEmail = guestEmail;

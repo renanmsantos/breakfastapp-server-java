@@ -35,6 +35,8 @@ public class Delivery {
     @UpdateTimestamp
     private Date updatedAt;
 
+    public Delivery() {}
+
     public Delivery(@NotNull DeliveryStatus deliveryStatus, @NotNull LocalDateTime scheduledDate, @NotNull Address address){
         this.deliveryStatus = deliveryStatus;
         this.scheduledDate = scheduledDate;

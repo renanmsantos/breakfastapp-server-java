@@ -49,6 +49,8 @@ public class Customer {
     @NotNull
     private Boolean active;
 
+    public Customer(){}
+
     public Customer(@NotNull String name, String lastName, @NotNull String email, @NotNull String password, @NotNull String cpf, String cellphone, CustomerGroup customerGroup, GroupRole groupRole, @NotNull Boolean active) {
         this.name = name;
         this.lastName = lastName;

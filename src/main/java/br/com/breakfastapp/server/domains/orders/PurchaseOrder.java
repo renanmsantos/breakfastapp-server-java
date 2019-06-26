@@ -41,6 +41,8 @@ public class PurchaseOrder {
     @UpdateTimestamp
     private Date updatedAt;
 
+    public PurchaseOrder() {}
+
     public PurchaseOrder(@NotNull PurchaseOrderStatus purchaseOrderStatus, @NotNull Customer customer, @NotNull Partner partner, Delivery delivery){
         this.purchaseOrderStatus = purchaseOrderStatus;
         this.customer = customer;

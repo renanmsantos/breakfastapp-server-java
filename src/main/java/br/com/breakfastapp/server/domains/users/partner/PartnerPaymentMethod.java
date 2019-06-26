@@ -33,6 +33,8 @@ public class PartnerPaymentMethod {
     @UpdateTimestamp
     private Date updatedAt;
 
+    public PartnerPaymentMethod(){}
+
     public PartnerPaymentMethod(@NotNull Partner partner, @NotNull PaymentMethod paymentMethod, Integer quotaPermitted) {
         this.partner = partner;
         this.paymentMethod = paymentMethod;

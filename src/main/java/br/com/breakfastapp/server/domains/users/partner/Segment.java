@@ -31,6 +31,8 @@ public class Segment {
     @NotNull
     private Boolean active;
 
+    public Segment() {}
+
     public Segment(@NotNull String name, String description, @NotNull Boolean active) {
         this.name = name;
         this.description = description;

@@ -42,6 +42,8 @@ public class Evaluation {
     @UpdateTimestamp
     private Date updatedAt;
 
+    public Evaluation() {}
+
     public Evaluation(@NotNull Customer customer, @NotNull PurchaseOrder purchaseOrder, @NotNull Integer gradeService, @NotNull Integer gradeDelivery, @NotNull Integer gradeProduct, String comments){
         this.customer = customer;
         this.purchaseOrder = purchaseOrder;

@@ -36,6 +36,8 @@ public class SocialInformation {
     @NotNull
     private Boolean active;
 
+    public SocialInformation() {}
+
     public SocialInformation(@NotNull String name, String description, @NotNull String url, @NotNull Partner partner, @NotNull Boolean active) {
         this.name = name;
         this.description = description;

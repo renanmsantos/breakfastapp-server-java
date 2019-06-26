@@ -31,6 +31,8 @@ public class Category {
     @NotNull
     private Boolean active;
 
+    public Category() {}
+
     public Category(@NotNull String name, String description, @NotNull Boolean active){
         this.name = name;
         this.description = description;
