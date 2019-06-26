@@ -1,11 +1,15 @@
 package br.com.breakfastapp.server.domains.users.partner;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.NaturalId;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 public class Partner {
@@ -23,6 +27,7 @@ public class Partner {
     private String password;
 
     @NotNull
+    @NaturalId
     private String cnpj;
 
     private Float deliveryFee;
@@ -33,7 +38,10 @@ public class Partner {
     @NotNull
     private Segment segment;
 
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    @CreationTimestamp
+    private Date createdAt;
+
+    @UpdateTimestamp
+    private Date updatedAt;
 
 }
