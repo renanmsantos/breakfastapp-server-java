@@ -1,4 +1,4 @@
-package br.com.breakfastapp.server.domains;
+package br.com.breakfastapp.server.domains.users;
 
 import lombok.Getter;
 import lombok.Setter;
