@@ -1,5 +1,7 @@
-package br.com.breakfastapp.server.domains.products;
+package br.com.breakfastapp.server.domains.orders;
 
+import br.com.breakfastapp.server.domains.orders.enuns.EnumPurchaseOrderStatus;
+import br.com.breakfastapp.server.domains.users.customer.Customer;
 import br.com.breakfastapp.server.domains.users.partner.Partner;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -9,37 +11,34 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
-public class Product {
+public class PurchaseOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @NotNull
-    private String name;
-
-    private Float price;
-    private String urlImage;
-    private Integer daysProduce;
-    private Integer quantity;
-
-    @NotNull
-    private Boolean available;
+    private EnumPurchaseOrderStatus purchaseOrderStatus;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "customer_id")
     @NotNull
-    private Category category;
+    private Customer customer;
 
     @ManyToOne
     @JoinColumn(name = "partner_id")
     @NotNull
     private Partner partner;
 
+    @ManyToOne
+    @JoinColumn(name = "delivery_id")
+    private Delivery delivery;
+
     @CreationTimestamp
     private Date createdAt;
 
     @UpdateTimestamp
     private Date updatedAt;
+
 
 }

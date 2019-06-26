@@ -1,14 +1,11 @@
 package br.com.breakfastapp.server.domains.payments;
 
-import br.com.breakfastapp.server.domains.orders.Order;
+import br.com.breakfastapp.server.domains.orders.PurchaseOrder;
 import br.com.breakfastapp.server.domains.payments.enuns.EnumPaymentStatus;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -22,8 +19,10 @@ public class Payment {
     @NotNull
     private EnumPaymentStatus paymentStatus;
 
+    @OneToOne
+    @JoinColumn(name = "purchase_order_id")
     @NotNull
-    private Order order;
+    private PurchaseOrder purchaseOrder;
 
     @CreationTimestamp
     private Date createdAt;

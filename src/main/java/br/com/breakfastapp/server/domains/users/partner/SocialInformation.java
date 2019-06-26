@@ -3,10 +3,7 @@ package br.com.breakfastapp.server.domains.users.partner;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -25,6 +22,8 @@ public class SocialInformation {
     @NotNull
     private String url;
 
+    @ManyToOne
+    @JoinColumn(name = "partner_id")
     @NotNull
     private Partner partner;
 

@@ -1,14 +1,12 @@
 package br.com.breakfastapp.server.domains.orders;
 
 import br.com.breakfastapp.server.domains.orders.enuns.EnumDeliveryStatus;
+import br.com.breakfastapp.server.domains.products.Category;
 import br.com.breakfastapp.server.domains.users.Address;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -26,6 +24,8 @@ public class Delivery {
     @NotNull
     private LocalDateTime scheduledDate;
 
+    @ManyToOne
+    @JoinColumn(name = "address_id")
     @NotNull
     private Address address;
 

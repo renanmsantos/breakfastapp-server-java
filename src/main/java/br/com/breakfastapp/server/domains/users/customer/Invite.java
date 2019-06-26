@@ -4,10 +4,7 @@ import br.com.breakfastapp.server.domains.users.customer.enuns.EnumInviteStatus;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -25,6 +22,16 @@ public class Invite {
     private String guestEmail;
 
     private EnumInviteStatus inviteStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    @NotNull
+    private Customer invitedByCustomer;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_group_id")
+    @NotNull
+    private CustomerGroup invitedToCustomerGroup;
 
     @CreationTimestamp
     private Date createdAt;

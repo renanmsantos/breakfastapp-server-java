@@ -4,10 +4,7 @@ import br.com.breakfastapp.server.domains.users.customer.Customer;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -18,11 +15,15 @@ public class Evaluation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
     @NotNull
     private Customer customer;
 
+    @OneToOne
+    @JoinColumn(name = "purchase_order_id")
     @NotNull
-    private Order order;
+    private PurchaseOrder purchaseOrder;
 
     @NotNull
     private Integer gradeService;

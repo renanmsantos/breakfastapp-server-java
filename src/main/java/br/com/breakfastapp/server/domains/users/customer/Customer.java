@@ -5,10 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -21,6 +18,7 @@ public class Customer {
 
     @NotNull
     private String name;
+
     private String lastName;
 
     @NotNull
@@ -34,7 +32,11 @@ public class Customer {
     private String cpf;
 
     private String cellphone;
-    private Group group;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_group_id")
+    private CustomerGroup customerGroup;
+
     private EnumGroupRole groupRole;
 
     @CreationTimestamp
