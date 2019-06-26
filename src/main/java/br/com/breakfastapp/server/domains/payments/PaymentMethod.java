@@ -27,4 +27,7 @@ public class PaymentMethod {
 
     @UpdateTimestamp
     private Date updatedAt;
+
+    @NotNull
+    private Boolean active;
 }

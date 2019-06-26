@@ -51,4 +51,7 @@ public class Partner {
     @UpdateTimestamp
     private Date updatedAt;
 
+    @NotNull
+    private Boolean active;
+
 }

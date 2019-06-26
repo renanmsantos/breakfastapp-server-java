@@ -28,4 +28,7 @@ public class CustomerGroup {
     @UpdateTimestamp
     private Date updatedAt;
 
+    @NotNull
+    private Boolean active;
+
 }

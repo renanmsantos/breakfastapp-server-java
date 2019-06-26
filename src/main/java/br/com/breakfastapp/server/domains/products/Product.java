@@ -42,4 +42,7 @@ public class Product {
     @UpdateTimestamp
     private Date updatedAt;
 
+    @NotNull
+    private Boolean active;
+
 }

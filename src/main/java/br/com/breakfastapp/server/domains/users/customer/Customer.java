@@ -1,6 +1,6 @@
 package br.com.breakfastapp.server.domains.users.customer;
 
-import br.com.breakfastapp.server.domains.users.customer.enuns.EnumGroupRole;
+import br.com.breakfastapp.server.domains.users.customer.enuns.GroupRole;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -37,12 +37,16 @@ public class Customer {
     @JoinColumn(name = "customer_group_id")
     private CustomerGroup customerGroup;
 
-    private EnumGroupRole groupRole;
+    @Enumerated(EnumType.STRING)
+    private GroupRole groupRole;
 
     @CreationTimestamp
     private Date createdAt;
 
     @UpdateTimestamp
     private Date updatedAt;
+
+    @NotNull
+    private Boolean active;
 
 }

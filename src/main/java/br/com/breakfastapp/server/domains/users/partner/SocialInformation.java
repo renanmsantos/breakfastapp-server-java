@@ -33,4 +33,7 @@ public class SocialInformation {
     @UpdateTimestamp
     private Date updatedAt;
 
+    @NotNull
+    private Boolean active;
+
 }

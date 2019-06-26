@@ -1,6 +1,6 @@
 package br.com.breakfastapp.server.domains.users.customer;
 
-import br.com.breakfastapp.server.domains.users.customer.enuns.EnumInviteStatus;
+import br.com.breakfastapp.server.domains.users.customer.enuns.InviteStatus;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -21,7 +21,8 @@ public class Invite {
     @NotNull
     private String guestEmail;
 
-    private EnumInviteStatus inviteStatus;
+    @Enumerated(EnumType.STRING)
+    private InviteStatus inviteStatus;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")

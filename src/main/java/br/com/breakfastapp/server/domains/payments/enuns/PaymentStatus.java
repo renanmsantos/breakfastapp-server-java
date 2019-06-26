@@ -1,4 +1,5 @@
 package br.com.breakfastapp.server.domains.payments.enuns;
 
-public enum EnumPaymentStatus {
+public enum PaymentStatus {
+    OPEN, PENDING, PAID
 }

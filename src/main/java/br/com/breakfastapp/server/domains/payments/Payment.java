@@ -1,7 +1,7 @@
 package br.com.breakfastapp.server.domains.payments;
 
 import br.com.breakfastapp.server.domains.orders.PurchaseOrder;
-import br.com.breakfastapp.server.domains.payments.enuns.EnumPaymentStatus;
+import br.com.breakfastapp.server.domains.payments.enuns.PaymentStatus;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -17,7 +17,8 @@ public class Payment {
     private Integer id;
 
     @NotNull
-    private EnumPaymentStatus paymentStatus;
+    @Enumerated(EnumType.STRING)
+    private PaymentStatus paymentStatus;
 
     @OneToOne
     @JoinColumn(name = "purchase_order_id")
@@ -29,4 +30,5 @@ public class Payment {
 
     @UpdateTimestamp
     private Date updatedAt;
+
 }

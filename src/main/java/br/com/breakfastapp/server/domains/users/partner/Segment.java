@@ -28,4 +28,7 @@ public class Segment {
     @UpdateTimestamp
     private Date updatedAt;
 
+    @NotNull
+    private Boolean active;
+
 }
