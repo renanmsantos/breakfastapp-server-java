@@ -13,5 +13,6 @@ spring:
     hibernate:
       ddl-auto: create-drop
   jackson:
+    serialization.write-dates-as-timestamps: false
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: America/Sao_Paulo

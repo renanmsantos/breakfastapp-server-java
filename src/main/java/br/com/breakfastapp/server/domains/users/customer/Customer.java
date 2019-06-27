@@ -1,6 +1,7 @@
 package br.com.breakfastapp.server.domains.users.customer;
 
 import br.com.breakfastapp.server.domains.users.customer.enuns.GroupRole;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.NaturalId;
@@ -31,6 +32,7 @@ public class Customer {
 
     @Column
     @NotNull
+    @JsonIgnore
     private String password;
 
     @Column
