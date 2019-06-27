@@ -1,6 +1,7 @@
 package br.com.breakfastapp.server.domains.products;
 
 import br.com.breakfastapp.server.domains.orders.PurchaseOrder;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -9,12 +10,14 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
+@Data
 public class ProductPurchaseOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column
     private Integer quantity;
 
     @ManyToOne
@@ -27,19 +30,12 @@ public class ProductPurchaseOrder {
     @NotNull
     private PurchaseOrder purchaseOrder;
 
+    @Column(updatable = false)
     @CreationTimestamp
     private Date createdAt;
 
+    @Column
     @UpdateTimestamp
     private Date updatedAt;
-
-    public ProductPurchaseOrder() {}
-
-    public ProductPurchaseOrder(Integer quantity, @NotNull Product product, @NotNull PurchaseOrder purchaseOrder) {
-        this.quantity = quantity;
-        this.product = product;
-        this.purchaseOrder = purchaseOrder;
-    }
-
 
 }

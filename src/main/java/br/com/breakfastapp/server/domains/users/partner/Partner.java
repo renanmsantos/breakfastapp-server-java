@@ -1,5 +1,6 @@
 package br.com.breakfastapp.server.domains.users.partner;
 
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -11,26 +12,33 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Data
 public class Partner {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column
     private String name;
 
+    @Column
     @NotNull
     private String email;
 
+    @Column
     @NotNull
     private String password;
 
+    @Column
     @NotNull
     @NaturalId
     private String cnpj;
 
+    @Column
     private Float deliveryFee;
 
+    @Column
     @NotNull
     private String phone;
 
@@ -45,26 +53,16 @@ public class Partner {
     @OneToMany
     private List<PartnerPaymentMethod> partnerPaymentMethods = new ArrayList<>();
 
+    @Column(updatable = false)
     @CreationTimestamp
     private Date createdAt;
 
+    @Column
     @UpdateTimestamp
     private Date updatedAt;
 
+    @Column
     @NotNull
     private Boolean active;
 
-    public Partner(){}
-
-    public Partner(Integer id, String name, @NotNull String email, @NotNull String password, @NotNull String cnpj, Float deliveryFee, @NotNull String phone, @NotNull Segment segment, @NotNull Boolean active) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.cnpj = cnpj;
-        this.deliveryFee = deliveryFee;
-        this.phone = phone;
-        this.segment = segment;
-        this.active = active;
-    }
 }

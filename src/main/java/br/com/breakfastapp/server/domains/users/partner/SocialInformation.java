@@ -1,5 +1,6 @@
 package br.com.breakfastapp.server.domains.users.partner;
 
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -8,17 +9,21 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
+@Data
 public class SocialInformation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column
     @NotNull
     private String name;
 
+    @Column
     private String description;
 
+    @Column
     @NotNull
     private String url;
 
@@ -27,22 +32,16 @@ public class SocialInformation {
     @NotNull
     private Partner partner;
 
+    @Column(updatable = false)
     @CreationTimestamp
     private Date createdAt;
 
+    @Column
     @UpdateTimestamp
     private Date updatedAt;
 
+    @Column
     @NotNull
     private Boolean active;
 
-    public SocialInformation() {}
-
-    public SocialInformation(@NotNull String name, String description, @NotNull String url, @NotNull Partner partner, @NotNull Boolean active) {
-        this.name = name;
-        this.description = description;
-        this.url = url;
-        this.partner = partner;
-        this.active = active;
-    }
 }

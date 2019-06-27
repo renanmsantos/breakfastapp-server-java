@@ -3,6 +3,7 @@ package br.com.breakfastapp.server.domains.orders;
 import br.com.breakfastapp.server.domains.orders.enuns.PurchaseOrderStatus;
 import br.com.breakfastapp.server.domains.users.customer.Customer;
 import br.com.breakfastapp.server.domains.users.partner.Partner;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -11,12 +12,14 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
+@Data
 public class PurchaseOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column
     @NotNull
     @Enumerated(EnumType.STRING)
     private PurchaseOrderStatus purchaseOrderStatus;
@@ -35,19 +38,12 @@ public class PurchaseOrder {
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
+    @Column(updatable = false)
     @CreationTimestamp
     private Date createdAt;
 
+    @Column
     @UpdateTimestamp
     private Date updatedAt;
-
-    public PurchaseOrder() {}
-
-    public PurchaseOrder(@NotNull PurchaseOrderStatus purchaseOrderStatus, @NotNull Customer customer, @NotNull Partner partner, Delivery delivery){
-        this.purchaseOrderStatus = purchaseOrderStatus;
-        this.customer = customer;
-        this.partner = partner;
-        this.delivery = delivery;
-    }
 
 }

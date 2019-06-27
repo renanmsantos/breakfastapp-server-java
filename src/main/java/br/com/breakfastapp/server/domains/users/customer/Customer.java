@@ -1,65 +1,63 @@
 package br.com.breakfastapp.server.domains.users.customer;
 
 import br.com.breakfastapp.server.domains.users.customer.enuns.GroupRole;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.util.Calendar;
 
 @Entity
+@Data
 public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column
     @NotNull
     private String name;
 
+    @Column
     private String lastName;
 
+    @Column
     @NotNull
     private String email;
 
+    @Column
     @NotNull
     private String password;
 
+    @Column
     @NotNull
     @NaturalId
     private String cpf;
 
+    @Column
     private String cellphone;
 
     @ManyToOne
     @JoinColumn(name = "customer_group_id")
     private CustomerGroup customerGroup;
 
+    @Column
     @Enumerated(EnumType.STRING)
     private GroupRole groupRole;
 
+    @Column(updatable = false)
     @CreationTimestamp
-    private Date createdAt;
+    private Calendar createdAt;
 
+    @Column
     @UpdateTimestamp
-    private Date updatedAt;
+    private Calendar updatedAt;
 
-    @NotNull
-    private Boolean active;
+    @Column
+    private Boolean active = true;
 
-    public Customer(){}
-
-    public Customer(@NotNull String name, String lastName, @NotNull String email, @NotNull String password, @NotNull String cpf, String cellphone, CustomerGroup customerGroup, GroupRole groupRole, @NotNull Boolean active) {
-        this.name = name;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.cpf = cpf;
-        this.cellphone = cellphone;
-        this.customerGroup = customerGroup;
-        this.groupRole = groupRole;
-        this.active = active;
-    }
 }

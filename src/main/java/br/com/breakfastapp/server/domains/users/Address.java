@@ -1,54 +1,51 @@
 package br.com.breakfastapp.server.domains.users;
 
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
+@Data
 public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column
     @NotNull
     private String street;
 
+    @Column
     @NotNull
     private Integer number;
 
+    @Column
     @NotNull
     private String district;
 
+    @Column
     @NotNull
     private String city;
 
+    @Column
     @NotNull
     private String cep;
 
+    @Column(updatable = false)
     @CreationTimestamp
     private Date createdAt;
 
+    @Column
     @UpdateTimestamp
     private Date updatedAt;
 
+    @Column
     @NotNull
     private Boolean active;
 
-    public Address() {}
-
-    public Address(@NotNull String street, @NotNull Integer number, @NotNull String district, @NotNull String city, @NotNull String cep, @NotNull Boolean active) {
-        this.street = street;
-        this.number = number;
-        this.district = district;
-        this.city = city;
-        this.cep = cep;
-        this.active = active;
-    }
 }

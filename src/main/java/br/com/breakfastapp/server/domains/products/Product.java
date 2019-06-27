@@ -1,6 +1,7 @@
 package br.com.breakfastapp.server.domains.products;
 
 import br.com.breakfastapp.server.domains.users.partner.Partner;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -9,20 +10,30 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
+@Data
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column
     @NotNull
     private String name;
 
+    @Column
     private Float price;
+
+    @Column
     private String urlImage;
+
+    @Column
     private Integer daysProduce;
+
+    @Column
     private Integer quantity;
 
+    @Column
     @NotNull
     private Boolean available;
 
@@ -36,27 +47,16 @@ public class Product {
     @NotNull
     private Partner partner;
 
+    @Column(updatable = false)
     @CreationTimestamp
     private Date createdAt;
 
+    @Column
     @UpdateTimestamp
     private Date updatedAt;
 
+    @Column
     @NotNull
     private Boolean active;
-
-    public Product() {}
-
-    public Product(@NotNull String name, Float price, String urlImage, Integer daysProduce, Integer quantity, @NotNull Boolean available, @NotNull Category category, @NotNull Partner partner, @NotNull Boolean active){
-        this.name = name;
-        this.price = price;
-        this.urlImage = urlImage;
-        this.daysProduce = daysProduce;
-        this.quantity = quantity;
-        this.available = available;
-        this.category = category;
-        this.partner = partner;
-        this.active = active;
-    }
 
 }

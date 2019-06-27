@@ -1,6 +1,7 @@
 package br.com.breakfastapp.server.domains.orders;
 
 import br.com.breakfastapp.server.domains.users.customer.Customer;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
+@Data
 public class Evaluation {
 
     @Id
@@ -25,32 +27,27 @@ public class Evaluation {
     @NotNull
     private PurchaseOrder purchaseOrder;
 
+    @Column
     @NotNull
     private Integer gradeService;
 
+    @Column
     @NotNull
     private Integer gradeDelivery;
 
+    @Column
     @NotNull
     private Integer gradeProduct;
 
+    @Column
     private String comments;
 
+    @Column(updatable = false)
     @CreationTimestamp
     private Date createdAt;
 
+    @Column
     @UpdateTimestamp
     private Date updatedAt;
-
-    public Evaluation() {}
-
-    public Evaluation(@NotNull Customer customer, @NotNull PurchaseOrder purchaseOrder, @NotNull Integer gradeService, @NotNull Integer gradeDelivery, @NotNull Integer gradeProduct, String comments){
-        this.customer = customer;
-        this.purchaseOrder = purchaseOrder;
-        this.gradeService = gradeService;
-        this.gradeDelivery = gradeDelivery;
-        this.gradeProduct = gradeProduct;
-        this.comments = comments;
-    }
 
 }

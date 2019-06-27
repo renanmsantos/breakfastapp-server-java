@@ -2,6 +2,7 @@ package br.com.breakfastapp.server.domains.orders;
 
 import br.com.breakfastapp.server.domains.orders.enuns.DeliveryStatus;
 import br.com.breakfastapp.server.domains.users.Address;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -11,16 +12,19 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
+@Data
 public class Delivery {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column
     @NotNull
     @Enumerated(EnumType.STRING)
     private DeliveryStatus deliveryStatus;
 
+    @Column
     @NotNull
     private LocalDateTime scheduledDate;
 
@@ -29,18 +33,12 @@ public class Delivery {
     @NotNull
     private Address address;
 
+    @Column(updatable = false)
     @CreationTimestamp
     private Date createdAt;
 
+    @Column
     @UpdateTimestamp
     private Date updatedAt;
-
-    public Delivery() {}
-
-    public Delivery(@NotNull DeliveryStatus deliveryStatus, @NotNull LocalDateTime scheduledDate, @NotNull Address address){
-        this.deliveryStatus = deliveryStatus;
-        this.scheduledDate = scheduledDate;
-        this.address = address;
-    }
 
 }

@@ -1,26 +1,31 @@
 package br.com.breakfastapp.server.domains.users.customer;
 
 import br.com.breakfastapp.server.domains.users.customer.enuns.InviteStatus;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.util.Calendar;
 
 @Entity
+@Data
 public class Invite {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column
     @NotNull
     private String guestName;
 
+    @Column
     @NotNull
     private String guestEmail;
 
+    @Column
     @Enumerated(EnumType.STRING)
     private InviteStatus inviteStatus;
 
@@ -34,19 +39,12 @@ public class Invite {
     @NotNull
     private CustomerGroup invitedToCustomerGroup;
 
+    @Column(updatable = false)
     @CreationTimestamp
-    private Date createdAt;
+    private Calendar createdAt;
 
+    @Column
     @UpdateTimestamp
-    private Date updatedAt;
+    private Calendar updatedAt;
 
-    public Invite() {}
-
-    public Invite(@NotNull String guestName, @NotNull String guestEmail, InviteStatus inviteStatus, @NotNull Customer invitedByCustomer, @NotNull CustomerGroup invitedToCustomerGroup) {
-        this.guestName = guestName;
-        this.guestEmail = guestEmail;
-        this.inviteStatus = inviteStatus;
-        this.invitedByCustomer = invitedByCustomer;
-        this.invitedToCustomerGroup = invitedToCustomerGroup;
-    }
 }
