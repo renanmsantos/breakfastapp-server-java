@@ -32,7 +32,6 @@ public class Customer {
 
     @Column
     @NotNull
-    @JsonIgnore
     private String password;
 
     @Column

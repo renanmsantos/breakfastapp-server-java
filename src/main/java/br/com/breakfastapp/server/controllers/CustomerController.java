@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/customers")
@@ -28,8 +27,7 @@ public class CustomerController {
     }
 
     @DeleteMapping(value = "/{customerId}")
-    public ResponseEntity deleteCustomer(
-            @PathVariable(name = "customerId") Integer customerId){
+    public ResponseEntity deleteCustomer(@PathVariable(name = "customerId") Integer customerId){
         return customerService.deleteCustomer(customerId);
     }
 
@@ -39,8 +37,7 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/{customerId}")
-    public ResponseEntity<Optional<Customer>> getCustomerById(
-            @PathVariable(name = "customerId") Integer customerId ){
+    public ResponseEntity<Customer> getCustomerById(@PathVariable(name = "customerId") Integer customerId ){
         return customerService.findCustomerById(customerId);
     }
 

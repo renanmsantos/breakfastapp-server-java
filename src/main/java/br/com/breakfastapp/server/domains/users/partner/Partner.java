@@ -29,7 +29,6 @@ public class Partner {
 
     @Column
     @NotNull
-    @JsonIgnore
     private String password;
 
     @Column
