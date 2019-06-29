@@ -1,17 +1,13 @@
 package br.com.breakfastapp.server.services;
 
 import br.com.breakfastapp.server.domains.users.customer.Customer;
-import br.com.breakfastapp.server.domains.users.customer.CustomerGroup;
-import br.com.breakfastapp.server.repositories.CustomerGroupRepository;
 import br.com.breakfastapp.server.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -25,6 +21,9 @@ public class CustomerService {
     }
 
     public ResponseEntity<Customer> saveCustomer(Customer customer){
+       if( !customerRepository.existsById(customer.getId()) ){
+            return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+        }
         Customer savedCustomer = customerRepository.save(customer);
         return new ResponseEntity<>(savedCustomer,HttpStatus.OK);
     }

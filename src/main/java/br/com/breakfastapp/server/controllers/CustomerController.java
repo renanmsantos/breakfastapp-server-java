@@ -22,7 +22,7 @@ public class CustomerController {
     }
 
     @PutMapping
-    public ResponseEntity<Customer> saveCustomer(@RequestBody @Valid Customer customer ){
+    public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer ){
         return customerService.saveCustomer(customer);
     }
 
