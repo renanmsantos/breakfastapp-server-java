@@ -14,8 +14,8 @@ import java.util.Date;
 public class Evaluation {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer evaluationId;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")

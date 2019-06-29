@@ -13,8 +13,8 @@ import java.util.Date;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer addressId;
 
     @Column
     @NotNull

@@ -13,8 +13,8 @@ import java.util.Date;
 public class Segment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer segmentId;
 
     @Column
     @NotNull

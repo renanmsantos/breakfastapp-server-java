@@ -1,6 +1,5 @@
 package br.com.breakfastapp.server.domains.users.partner;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.NaturalId;
@@ -17,8 +16,8 @@ import java.util.List;
 public class Partner {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer partnerId;
 
     @Column
     private String name;

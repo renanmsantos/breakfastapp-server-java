@@ -13,8 +13,8 @@ import java.util.Calendar;
 public class CustomerGroup {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer customerGroupId;
 
     @Column
     @NotNull

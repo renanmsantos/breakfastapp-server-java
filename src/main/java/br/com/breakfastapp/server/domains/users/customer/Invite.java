@@ -14,8 +14,8 @@ import java.util.Calendar;
 public class Invite {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer inviteId;
 
     @Column
     @NotNull
