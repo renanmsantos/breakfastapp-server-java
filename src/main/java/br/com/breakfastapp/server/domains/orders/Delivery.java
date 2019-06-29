@@ -16,8 +16,8 @@ import java.util.Date;
 public class Delivery {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer deliveryId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column
     @NotNull

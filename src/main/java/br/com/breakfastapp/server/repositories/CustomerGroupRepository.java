@@ -13,15 +13,15 @@ import java.util.List;
 @Repository
 public interface CustomerGroupRepository extends JpaRepository<CustomerGroup,Integer> {
 
-    @Query("select c from CustomerGroup c where c.active = true ")
+    @Query("select cg from CustomerGroup cg where cg.active = true ")
     List<CustomerGroup> findAll();
 
-    @Query("select c from CustomerGroup c where c.customerGroupId = :customerGroupId and c.active = true ")
+    @Query("select cg from CustomerGroup cg where cg.id = :customerGroupId and cg.active = true ")
     CustomerGroup findCustomerGroupById(@Param("customerGroupId") Integer customerGroupId);
 
     @Transactional
     @Modifying
-    @Query("update CustomerGroup c set c.active = false where c.customerGroupId = :customerGroupId")
+    @Query("update CustomerGroup cg set cg.active = false where cg.id = :customerGroupId")
     void deleteCustomerGroupById(@Param("customerGroupId") Integer customerGroupId);
 
 

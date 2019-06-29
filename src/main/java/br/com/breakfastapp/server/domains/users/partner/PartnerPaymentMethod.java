@@ -14,8 +14,8 @@ import java.util.Date;
 public class PartnerPaymentMethod {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer partnerPaymentMethodId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "partner_id")

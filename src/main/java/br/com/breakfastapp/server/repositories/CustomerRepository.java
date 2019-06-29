@@ -16,12 +16,12 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
     @Query("select c from Customer c where c.active = true ")
     List<Customer> findAll();
 
-    @Query("select c from Customer c where c.customerId = :customerId and c.active = true ")
+    @Query("select c from Customer c where c.id = :customerId and c.active = true ")
     Customer findCustomerById(@Param("customerId") Integer customerId);
 
     @Transactional
     @Modifying
-    @Query("update Customer c set c.active = false where c.customerId = :customerId")
+    @Query("update Customer c set c.active = false where c.id = :customerId")
     void deleteCustomerById(@Param("customerId") Integer customerId);
 
 }

@@ -16,8 +16,8 @@ import java.util.Date;
 public class PurchaseOrder {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Integer purchaseOrderId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column
     @NotNull

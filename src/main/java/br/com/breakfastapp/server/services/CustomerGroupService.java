@@ -23,7 +23,7 @@ public class CustomerGroupService {
     }
 
     public ResponseEntity<CustomerGroup> saveCustomerGroup(CustomerGroup customerGroup){
-       if( !customerGroupRepository.existsById(customerGroup.getCustomerGroupId()) ){
+       if( !customerGroupRepository.existsById(customerGroup.getId()) ){
             return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
         }
         CustomerGroup savedCustomerGroup = customerGroupRepository.save(customerGroup);

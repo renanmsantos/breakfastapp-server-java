@@ -21,7 +21,7 @@ public class CustomerService {
     }
 
     public ResponseEntity<Customer> saveCustomer(Customer customer){
-       if( !customerRepository.existsById(customer.getCustomerId()) ){
+       if( !customerRepository.existsById(customer.getId()) ){
             return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
         }
         Customer savedCustomer = customerRepository.save(customer);
