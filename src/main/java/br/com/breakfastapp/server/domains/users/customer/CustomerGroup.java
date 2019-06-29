@@ -32,7 +32,6 @@ public class CustomerGroup {
     private Calendar updatedAt;
 
     @Column
-    @NotNull
-    private Boolean active;
+    private Boolean active = true;
 
 }
