@@ -16,12 +16,12 @@ public interface CustomerGroupRepository extends JpaRepository<CustomerGroup,Int
     @Query("select c from CustomerGroup c where c.active = true ")
     List<CustomerGroup> findAll();
 
-    @Query("select c from CustomerGroup c where c.id = :customerGroupId and c.active = true ")
+    @Query("select c from CustomerGroup c where c.customerGroupId = :customerGroupId and c.active = true ")
     CustomerGroup findCustomerGroupById(@Param("customerGroupId") Integer customerGroupId);
 
     @Transactional
     @Modifying
-    @Query("update CustomerGroup c set c.active = false where c.id = :customerGroupId")
+    @Query("update CustomerGroup c set c.active = false where c.customerGroupId = :customerGroupId")
     void deleteCustomerGroupById(@Param("customerGroupId") Integer customerGroupId);
 
 
