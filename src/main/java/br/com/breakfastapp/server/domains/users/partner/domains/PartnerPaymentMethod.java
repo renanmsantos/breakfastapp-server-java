@@ -1,5 +1,6 @@
-package br.com.breakfastapp.server.domains.users.partner;
+package br.com.breakfastapp.server.domains.users.partner.domains;
 
+import br.com.breakfastapp.server.domains.payments.PaymentMethod;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -10,18 +11,24 @@ import java.util.Date;
 
 @Entity
 @Data
-public class Segment {
+public class PartnerPaymentMethod {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @ManyToOne
+    @JoinColumn(name = "partner_id")
     @NotNull
-    private String name;
+    private Partner partner;
+
+    @ManyToOne
+    @JoinColumn(name = "payment_method_id")
+    @NotNull
+    private PaymentMethod paymentMethod;
 
     @Column
-    private String description;
+    private Integer quotaPermitted;
 
     @Column(updatable = false)
     @CreationTimestamp
@@ -30,9 +37,5 @@ public class Segment {
     @Column
     @UpdateTimestamp
     private Date updatedAt;
-
-    @Column
-    @NotNull
-    private Boolean active;
 
 }

@@ -1,7 +1,7 @@
 package br.com.breakfastapp.server.domains.orders;
 
 import br.com.breakfastapp.server.domains.orders.enuns.DeliveryStatus;
-import br.com.breakfastapp.server.domains.users.Address;
+import br.com.breakfastapp.server.domains.users.address.domains.Address;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;

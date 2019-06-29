@@ -1,4 +1,4 @@
-package br.com.breakfastapp.server.domains.users.partner;
+package br.com.breakfastapp.server.domains.users.partner.domains;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @Data
-public class SocialInformation {
+public class Segment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,15 +22,6 @@ public class SocialInformation {
 
     @Column
     private String description;
-
-    @Column
-    @NotNull
-    private String url;
-
-    @ManyToOne
-    @JoinColumn(name = "partner_id")
-    @NotNull
-    private Partner partner;
 
     @Column(updatable = false)
     @CreationTimestamp

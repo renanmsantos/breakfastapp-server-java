@@ -1,7 +1,7 @@
-package br.com.breakfastapp.server.filters;
+package br.com.breakfastapp.server.security.filters;
 
-import br.com.breakfastapp.server.domains.users.AccountCredentials;
-import br.com.breakfastapp.server.services.TokenAuthenticationService;
+import br.com.breakfastapp.server.security.domains.AccountCredentials;
+import br.com.breakfastapp.server.security.services.TokenAuthenticationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

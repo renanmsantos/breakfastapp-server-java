@@ -1,6 +1,6 @@
-package br.com.breakfastapp.server.filters;
+package br.com.breakfastapp.server.security.filters;
 
-import br.com.breakfastapp.server.services.TokenAuthenticationService;
+import br.com.breakfastapp.server.security.services.TokenAuthenticationService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;

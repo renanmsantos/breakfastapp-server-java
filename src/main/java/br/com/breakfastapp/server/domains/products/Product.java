@@ -1,6 +1,6 @@
 package br.com.breakfastapp.server.domains.products;
 
-import br.com.breakfastapp.server.domains.users.partner.Partner;
+import br.com.breakfastapp.server.domains.users.partner.domains.Partner;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;

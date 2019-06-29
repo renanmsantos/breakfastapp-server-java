@@ -1,4 +1,4 @@
-package br.com.breakfastapp.server.domains.users;
+package br.com.breakfastapp.server.security.domains;
 
 public class AccountCredentials {
 

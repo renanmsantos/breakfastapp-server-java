@@ -1,6 +1,5 @@
-package br.com.breakfastapp.server.domains.users.partner;
+package br.com.breakfastapp.server.domains.users.address.domains;
 
-import br.com.breakfastapp.server.domains.payments.PaymentMethod;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -11,24 +10,31 @@ import java.util.Date;
 
 @Entity
 @Data
-public class PartnerPaymentMethod {
+public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "partner_id")
+    @Column
     @NotNull
-    private Partner partner;
-
-    @ManyToOne
-    @JoinColumn(name = "payment_method_id")
-    @NotNull
-    private PaymentMethod paymentMethod;
+    private String street;
 
     @Column
-    private Integer quotaPermitted;
+    @NotNull
+    private Integer number;
+
+    @Column
+    @NotNull
+    private String district;
+
+    @Column
+    @NotNull
+    private String city;
+
+    @Column
+    @NotNull
+    private String cep;
 
     @Column(updatable = false)
     @CreationTimestamp
@@ -37,5 +43,9 @@ public class PartnerPaymentMethod {
     @Column
     @UpdateTimestamp
     private Date updatedAt;
+
+    @Column
+    @NotNull
+    private Boolean active;
 
 }

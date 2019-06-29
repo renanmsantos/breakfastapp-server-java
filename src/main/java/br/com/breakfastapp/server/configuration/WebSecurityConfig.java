@@ -1,7 +1,7 @@
 package br.com.breakfastapp.server.configuration;
 
-import br.com.breakfastapp.server.filters.JWTAuthenticationFilter;
-import br.com.breakfastapp.server.filters.JWTLoginFilter;
+import br.com.breakfastapp.server.security.filters.JWTAuthenticationFilter;
+import br.com.breakfastapp.server.security.filters.JWTLoginFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

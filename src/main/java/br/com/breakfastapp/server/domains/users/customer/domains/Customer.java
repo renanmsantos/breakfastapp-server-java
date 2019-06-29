@@ -1,5 +1,6 @@
-package br.com.breakfastapp.server.domains.users.partner;
+package br.com.breakfastapp.server.domains.users.customer.domains;
 
+import br.com.breakfastapp.server.domains.users.customer.enuns.GroupRole;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.NaturalId;
@@ -7,20 +8,22 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.Calendar;
 
 @Entity
 @Data
-public class Partner {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
+    @NotNull
     private String name;
+
+    @Column
+    private String lastName;
 
     @Column
     @NotNull
@@ -33,36 +36,28 @@ public class Partner {
     @Column
     @NotNull
     @NaturalId
-    private String cnpj;
+    private String cpf;
 
     @Column
-    private Float deliveryFee;
-
-    @Column
-    @NotNull
-    private String phone;
+    private String cellphone;
 
     @ManyToOne
-    @JoinColumn(name = "segment_id")
-    @NotNull
-    private Segment segment;
+    @JoinColumn(name = "customer_group_id")
+    private CustomerGroup customerGroup;
 
-    @OneToMany
-    private List<SocialInformation> socialInformation = new ArrayList<>();
-
-    @OneToMany
-    private List<PartnerPaymentMethod> partnerPaymentMethods = new ArrayList<>();
+    @Column
+    @Enumerated(EnumType.STRING)
+    private GroupRole groupRole;
 
     @Column(updatable = false)
     @CreationTimestamp
-    private Date createdAt;
+    private Calendar createdAt;
 
     @Column
     @UpdateTimestamp
-    private Date updatedAt;
+    private Calendar updatedAt;
 
     @Column
-    @NotNull
-    private Boolean active;
+    private Boolean active = true;
 
 }

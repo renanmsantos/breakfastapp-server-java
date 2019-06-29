@@ -1,4 +1,4 @@
-package br.com.breakfastapp.server.domains.users.customer;
+package br.com.breakfastapp.server.domains.users.customer.domains;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;

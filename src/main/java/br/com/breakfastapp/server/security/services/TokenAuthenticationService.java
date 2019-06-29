@@ -1,4 +1,4 @@
-package br.com.breakfastapp.server.services;
+package br.com.breakfastapp.server.security.services;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

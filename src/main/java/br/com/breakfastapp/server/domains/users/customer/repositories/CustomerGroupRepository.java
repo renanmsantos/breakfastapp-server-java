@@ -1,6 +1,6 @@
-package br.com.breakfastapp.server.repositories;
+package br.com.breakfastapp.server.domains.users.customer.repositories;
 
-import br.com.breakfastapp.server.domains.users.customer.CustomerGroup;
+import br.com.breakfastapp.server.domains.users.customer.domains.CustomerGroup;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface CustomerGroupRepository extends JpaRepository<CustomerGroup,Integer> {
