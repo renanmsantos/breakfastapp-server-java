@@ -9,20 +9,21 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface CustomerGroupRepository extends JpaRepository<CustomerGroup,Integer> {
 
-    @Query("select cg from CustomerGroup cg where cg.active = true ")
+    @Query("select cg from CustomerGroup cg where cg.active = true")
     List<CustomerGroup> findAll();
 
-    @Query("select cg from CustomerGroup cg where cg.id = :customerGroupId and cg.active = true ")
-    CustomerGroup findCustomerGroupById(@Param("customerGroupId") Integer customerGroupId);
+    @Query("select cg from CustomerGroup cg where cg.id = :id and cg.active = true ")
+    CustomerGroup findOneById(@Param("id") Integer id);
 
     @Transactional
     @Modifying
-    @Query("update CustomerGroup cg set cg.active = false where cg.id = :customerGroupId")
-    void deleteCustomerGroupById(@Param("customerGroupId") Integer customerGroupId);
+    @Query("update CustomerGroup cg set cg.active = false where cg.id = :id")
+    void deleteById(@Param("id") Integer id);
 
 
 }

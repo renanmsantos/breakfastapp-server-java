@@ -17,28 +17,28 @@ public class CustomerGroupController {
     private CustomerGroupService customerGroupService;
 
     @PostMapping
-    public ResponseEntity<CustomerGroup> createCustomerGroup(@RequestBody @Valid CustomerGroup customerGroup ){
-        return customerGroupService.createCustomerGroup(customerGroup);
+    public ResponseEntity<CustomerGroup> create(@RequestBody @Valid CustomerGroup customerGroup ){
+        return customerGroupService.create(customerGroup);
     }
 
     @PutMapping
-    public ResponseEntity<CustomerGroup> saveCustomerGroup(@RequestBody CustomerGroup customerGroup ){
-        return customerGroupService.saveCustomerGroup(customerGroup);
+    public ResponseEntity<CustomerGroup> save(@RequestBody CustomerGroup customerGroup ){
+        return customerGroupService.save(customerGroup);
     }
 
-    @DeleteMapping(value = "/{customerGroupId}")
-    public ResponseEntity deleteCustomerGroup(@PathVariable(name = "customerGroupId") Integer customerGroupId){
-        return customerGroupService.deleteCustomerGroup(customerGroupId);
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity deleteById(@PathVariable(name = "id") Integer id){
+        return customerGroupService.deleteById(id);
     }
 
     @GetMapping
-    public ResponseEntity<List<CustomerGroup>> getAllCustomerGroups(){
-        return customerGroupService.findAllCustomerGroups();
+    public ResponseEntity<List<CustomerGroup>> getAll(){
+        return customerGroupService.findAll();
     }
 
-    @GetMapping(value = "/{customerGroupId}")
-    public ResponseEntity<CustomerGroup> getCustomerById(@PathVariable(name = "customerGroupId") Integer customerGroupId ){
-        return customerGroupService.findCustomerGroupById(customerGroupId);
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<CustomerGroup> getOneById(@PathVariable(name = "id") Integer id ){
+        return customerGroupService.findOneById(id);
     }
 
 }

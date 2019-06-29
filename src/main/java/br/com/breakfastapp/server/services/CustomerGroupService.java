@@ -17,34 +17,34 @@ public class CustomerGroupService {
     @Autowired
     private CustomerGroupRepository customerGroupRepository;
 
-    public ResponseEntity<CustomerGroup> createCustomerGroup(CustomerGroup customerGroup) {
-        CustomerGroup createdCustomerGroup = customerGroupRepository.save(customerGroup);
-        return new ResponseEntity(createdCustomerGroup, HttpStatus.CREATED);
+    public ResponseEntity<CustomerGroup> create(CustomerGroup customerGroup) {
+        CustomerGroup created = customerGroupRepository.save(customerGroup);
+        return new ResponseEntity(created, HttpStatus.CREATED);
     }
 
-    public ResponseEntity<CustomerGroup> saveCustomerGroup(CustomerGroup customerGroup){
+    public ResponseEntity<CustomerGroup> save(CustomerGroup customerGroup){
        if( !customerGroupRepository.existsById(customerGroup.getId()) ){
             return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
         }
-        CustomerGroup savedCustomerGroup = customerGroupRepository.save(customerGroup);
-        return new ResponseEntity<>(savedCustomerGroup,HttpStatus.OK);
+        CustomerGroup saved = customerGroupRepository.save(customerGroup);
+        return new ResponseEntity<>(saved,HttpStatus.OK);
     }
 
-    public ResponseEntity deleteCustomerGroup(Integer customerGroupId) {
-        if( customerGroupRepository.existsById(customerGroupId) ){
-            customerGroupRepository.deleteCustomerGroupById(customerGroupId);
+    public ResponseEntity deleteById(Integer id) {
+        if( customerGroupRepository.existsById(id) ){
+            customerGroupRepository.deleteById(id);
         }
         return new ResponseEntity("",HttpStatus.OK);
     }
 
-    public ResponseEntity<List<CustomerGroup>> findAllCustomerGroups(){
-        List<CustomerGroup> customerGroups = customerGroupRepository.findAll();
-        return new ResponseEntity<>(customerGroups, HttpStatus.OK);
+    public ResponseEntity<List<CustomerGroup>> findAll(){
+        List<CustomerGroup> returnedList = customerGroupRepository.findAll();
+        return new ResponseEntity<>(returnedList, HttpStatus.OK);
     }
 
-    public ResponseEntity<CustomerGroup> findCustomerGroupById(Integer customerGroupId) {
-        CustomerGroup foundCustomerGroup = customerGroupRepository.findCustomerGroupById(customerGroupId);
-        return new ResponseEntity<>(foundCustomerGroup,HttpStatus.OK);
+    public ResponseEntity<CustomerGroup> findOneById(Integer id) {
+        CustomerGroup found = customerGroupRepository.findOneById(id);
+        return new ResponseEntity<>(found,HttpStatus.OK);
     }
 
 }

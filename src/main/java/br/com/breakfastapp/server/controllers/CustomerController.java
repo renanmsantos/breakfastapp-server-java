@@ -17,28 +17,28 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping
-    public ResponseEntity<Customer> createCustomer(@RequestBody @Valid Customer customer ){
-        return customerService.createCustomer(customer);
+    public ResponseEntity<Customer> create(@RequestBody @Valid Customer customer ){
+        return customerService.create(customer);
     }
 
     @PutMapping
-    public ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer ){
-        return customerService.saveCustomer(customer);
+    public ResponseEntity<Customer> save(@RequestBody Customer customer ){
+        return customerService.save(customer);
     }
 
-    @DeleteMapping(value = "/{customerId}")
-    public ResponseEntity deleteCustomer(@PathVariable(name = "customerId") Integer customerId){
-        return customerService.deleteCustomer(customerId);
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity deleteById(@PathVariable(name = "id") Integer id){
+        return customerService.deleteById(id);
     }
 
     @GetMapping
-    public ResponseEntity<List<Customer>> getAllCustomers(){
-        return customerService.findAllCustomers();
+    public ResponseEntity<List<Customer>> getAll(){
+        return customerService.findAll();
     }
 
-    @GetMapping(value = "/{customerId}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable(name = "customerId") Integer customerId ){
-        return customerService.findCustomerById(customerId);
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Customer> getOneById(@PathVariable(name = "id") Integer id ){
+        return customerService.findOneById(id);
     }
 
 }

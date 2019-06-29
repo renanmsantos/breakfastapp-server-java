@@ -15,34 +15,34 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public ResponseEntity<Customer> createCustomer(Customer customer) {
-        Customer createdCustomer = customerRepository.save(customer);
-        return new ResponseEntity(createdCustomer, HttpStatus.CREATED);
+    public ResponseEntity<Customer> create(Customer customer) {
+        Customer created = customerRepository.save(customer);
+        return new ResponseEntity(created, HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Customer> saveCustomer(Customer customer){
+    public ResponseEntity<Customer> save(Customer customer){
        if( !customerRepository.existsById(customer.getId()) ){
             return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
         }
-        Customer savedCustomer = customerRepository.save(customer);
-        return new ResponseEntity<>(savedCustomer,HttpStatus.OK);
+        Customer saved = customerRepository.save(customer);
+        return new ResponseEntity<>(saved,HttpStatus.OK);
     }
 
-    public ResponseEntity deleteCustomer(Integer customerId) {
-        if( customerRepository.existsById(customerId) ){
-            customerRepository.deleteCustomerById(customerId);
+    public ResponseEntity deleteById(Integer id) {
+        if( customerRepository.existsById(id) ){
+            customerRepository.deleteById(id);
         }
         return new ResponseEntity("",HttpStatus.OK);
     }
 
-    public ResponseEntity<List<Customer>> findAllCustomers(){
-        List<Customer> customers = customerRepository.findAll();
-        return new ResponseEntity<>(customers, HttpStatus.OK);
+    public ResponseEntity<List<Customer>> findAll(){
+        List<Customer> returnedList = customerRepository.findAll();
+        return new ResponseEntity<>(returnedList, HttpStatus.OK);
     }
 
-    public ResponseEntity<Customer> findCustomerById(Integer customerId) {
-        Customer foundCustomer = customerRepository.findCustomerById(customerId);
-        return new ResponseEntity<>(foundCustomer,HttpStatus.OK);
+    public ResponseEntity<Customer> findOneById(Integer customerId) {
+        Customer found = customerRepository.findOneById(customerId);
+        return new ResponseEntity<>(found,HttpStatus.OK);
     }
 
 }

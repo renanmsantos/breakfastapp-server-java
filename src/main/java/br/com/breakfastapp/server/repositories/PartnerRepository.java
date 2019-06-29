@@ -1,6 +1,6 @@
 package br.com.breakfastapp.server.repositories;
 
-import br.com.breakfastapp.server.domains.users.customer.Customer;
+import br.com.breakfastapp.server.domains.users.partner.Partner;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -11,17 +11,17 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<Customer,Integer> {
+public interface PartnerRepository extends JpaRepository<Partner,Integer> {
 
-    @Query("select c from Customer c where c.active = true ")
-    List<Customer> findAll();
+    @Query("select p from Partner p where p.active = true ")
+    List<Partner> findAll();
 
-    @Query("select c from Customer c where c.id = :id and c.active = true ")
-    Customer findOneById(@Param("id") Integer id);
+    @Query("select p from Partner p where p.id = :id and p.active = true ")
+    Partner findOneById(@Param("id") Integer id);
 
     @Transactional
     @Modifying
-    @Query("update Customer c set c.active = false where c.id = :id")
+    @Query("update Partner c set c.active = false where c.id = :id")
     void deleteById(@Param("id") Integer id);
 
 }
