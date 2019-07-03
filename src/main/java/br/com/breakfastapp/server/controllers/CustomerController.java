@@ -50,12 +50,12 @@ public class CustomerController {
      * @apiNote  CustomerGroup
      **/
 
-    @PostMapping(name = "/group")
+    @PostMapping(value = "/group")
     public ResponseEntity<CustomerGroup> createCustomerGroup(@RequestBody @Valid CustomerGroup customerGroup ){
         return customerService.createCustomerGroup(customerGroup);
     }
 
-    @PutMapping(name = "/group")
+    @PutMapping(value = "/group")
     public ResponseEntity<CustomerGroup> saveCustomerGroup(@RequestBody CustomerGroup customerGroup ){
         return customerService.saveCustomerGroup(customerGroup);
     }
@@ -65,7 +65,7 @@ public class CustomerController {
         return customerService.deleteCustomerGroupById(id);
     }
 
-    @GetMapping(name = "/group")
+    @GetMapping(value = "/group")
     public ResponseEntity<List<CustomerGroup>> getAllCustomerGroups(){
         return customerService.findAllCustomerGroups();
     }

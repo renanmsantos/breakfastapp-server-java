@@ -19,7 +19,7 @@ public class PartnerController {
     private PartnerService partnerService;
 
     /**
-     * @apiNote  ROOT - Partner
+     * @apiNote:  ROOT - Partner
      **/
 
     @PostMapping
@@ -48,7 +48,7 @@ public class PartnerController {
     }
 
     /**
-     * @apiNote  SocialInformation
+     * @apiNote:  SocialInformation
      **/
 
     @PostMapping(value = "/socialinfo")
@@ -78,7 +78,7 @@ public class PartnerController {
 
 
     /**
-     * @apiNote  Segment
+     * @apiNote:  Segment
      **/
 
     @PostMapping(value = "/segment")
