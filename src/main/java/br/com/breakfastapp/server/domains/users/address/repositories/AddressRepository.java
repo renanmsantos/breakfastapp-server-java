@@ -14,12 +14,12 @@ import java.util.List;
 @Repository
 public interface AddressRepository extends JpaRepository<Address,Integer> {
 
-    @Query("select a from Address a where c.active = true ")
+    @Query("select a from Address a where a.active = true ")
     List<Address> findAll();
 
     @Transactional
     @Modifying
-    @Query("update Address a set a.active = false where c.id = :id")
+    @Query("update Address a set a.active = false where a.id = :id")
     void deleteById(@Param("id") Integer id);
 
     Address findOneByCep(String cep);
