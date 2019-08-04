@@ -34,11 +34,6 @@ public class Invite {
     @NotNull
     private Customer invitedByCustomer;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_group_id")
-    @NotNull
-    private CustomerGroup invitedToCustomerGroup;
-
     @Column(updatable = false)
     @CreationTimestamp
     private Calendar createdAt;

@@ -2,10 +2,6 @@ package br.com.breakfastapp.server.domains.users.address.services;
 
 import br.com.breakfastapp.server.domains.users.address.domains.Address;
 import br.com.breakfastapp.server.domains.users.address.repositories.AddressRepository;
-import br.com.breakfastapp.server.domains.users.customer.domains.Customer;
-import br.com.breakfastapp.server.domains.users.customer.domains.CustomerGroup;
-import br.com.breakfastapp.server.domains.users.customer.repositories.CustomerGroupRepository;
-import br.com.breakfastapp.server.domains.users.customer.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -106,7 +106,4 @@ public class PartnerController {
         return partnerService.findOneSegmentById(id);
     }
 
-
-
-
 }

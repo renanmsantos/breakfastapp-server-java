@@ -25,7 +25,7 @@ public class SwaggerConfig {
     public Docket greetingApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("br.com.breakfastapp.server.controllers"))
+                .apis(RequestHandlerSelectors.basePackage("server.controllers"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(metaData());

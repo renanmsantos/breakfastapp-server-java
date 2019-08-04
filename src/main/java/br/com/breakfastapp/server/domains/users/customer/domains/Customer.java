@@ -1,9 +1,7 @@
 package br.com.breakfastapp.server.domains.users.customer.domains;
 
-import br.com.breakfastapp.server.domains.users.customer.enuns.GroupRole;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -27,6 +25,10 @@ public class Customer {
 
     @Column
     @NotNull
+    private String cpf;
+
+    @Column
+    @NotNull
     private String email;
 
     @Column
@@ -34,20 +36,7 @@ public class Customer {
     private String password;
 
     @Column
-    @NotNull
-    @NaturalId
-    private String cpf;
-
-    @Column
     private String cellphone;
-
-    @ManyToOne
-    @JoinColumn(name = "customer_group_id")
-    private CustomerGroup customerGroup;
-
-    @Column
-    @Enumerated(EnumType.STRING)
-    private GroupRole groupRole;
 
     @Column(updatable = false)
     @CreationTimestamp

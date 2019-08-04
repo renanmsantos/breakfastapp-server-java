@@ -1,8 +1,7 @@
 package br.com.breakfastapp.server.domains.users.customer.services;
 
 import br.com.breakfastapp.server.domains.users.customer.domains.Customer;
-import br.com.breakfastapp.server.domains.users.customer.domains.CustomerGroup;
-import br.com.breakfastapp.server.domains.users.customer.repositories.CustomerGroupRepository;
+import br.com.breakfastapp.server.domains.users.customer.pojos.CustomerPojo;
 import br.com.breakfastapp.server.domains.users.customer.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,9 +16,6 @@ public class CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    @Autowired
-    private CustomerGroupRepository customerGroupRepository;
-
     /**
      * @apiNote  Customer
      **/
@@ -29,11 +25,18 @@ public class CustomerService {
         return new ResponseEntity(created, HttpStatus.CREATED);
     }
 
-    public ResponseEntity<Customer> saveCustomer(Customer customer){
+    public ResponseEntity<Customer> saveCustomer(CustomerPojo customer){
        if( !customerRepository.existsById(customer.getId()) ){
-            return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+           return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+       }
+        Customer old = customerRepository.findOneById(customer.getId());
+        old.setName(customer.getName());
+        old.setLastName(customer.getLastName());
+        old.setCellphone(customer.getCellphone());
+        if(!customer.getPassword().isEmpty()){
+            old.setPassword(customer.getPassword());
         }
-        Customer saved = customerRepository.save(customer);
+        Customer saved = customerRepository.save(old);
         return new ResponseEntity<>(saved,HttpStatus.OK);
     }
 
@@ -54,38 +57,5 @@ public class CustomerService {
         return new ResponseEntity<>(found,HttpStatus.OK);
     }
 
-    /**
-     * @apiNote  CustomerGroup
-     **/
-
-    public ResponseEntity<CustomerGroup> createCustomerGroup(CustomerGroup customerGroup) {
-        CustomerGroup created = customerGroupRepository.save(customerGroup);
-        return new ResponseEntity(created, HttpStatus.CREATED);
-    }
-
-    public ResponseEntity<CustomerGroup> saveCustomerGroup(CustomerGroup customerGroup){
-        if( !customerGroupRepository.existsById(customerGroup.getId()) ){
-            return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
-        }
-        CustomerGroup saved = customerGroupRepository.save(customerGroup);
-        return new ResponseEntity<>(saved,HttpStatus.OK);
-    }
-
-    public ResponseEntity deleteCustomerGroupById(Integer id) {
-        if( customerGroupRepository.existsById(id) ){
-            customerGroupRepository.deleteById(id);
-        }
-        return new ResponseEntity("",HttpStatus.OK);
-    }
-
-    public ResponseEntity<List<CustomerGroup>> findAllCustomerGroups(){
-        List<CustomerGroup> returnedList = customerGroupRepository.findAll();
-        return new ResponseEntity<>(returnedList, HttpStatus.OK);
-    }
-
-    public ResponseEntity<CustomerGroup> findOneCustomerGroupById(Integer id) {
-        CustomerGroup found = customerGroupRepository.findOneById(id);
-        return new ResponseEntity<>(found,HttpStatus.OK);
-    }
 
 }

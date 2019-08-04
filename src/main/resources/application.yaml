@@ -11,7 +11,8 @@ spring:
     password: postgres
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
+    show-sql: true
   jackson:
     serialization.write-dates-as-timestamps: false
     date-format: yyyy-MM-dd HH:mm:ss
