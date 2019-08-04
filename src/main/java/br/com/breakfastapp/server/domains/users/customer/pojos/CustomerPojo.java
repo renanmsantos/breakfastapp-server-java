@@ -1,6 +1,9 @@
 package br.com.breakfastapp.server.domains.users.customer.pojos;
 
+import br.com.breakfastapp.server.domains.users.address.domains.Address;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class CustomerPojo {
@@ -13,4 +16,6 @@ public class CustomerPojo {
     private String password;
 
     private String cellphone;
+
+    private List<Address> addresses;
 }

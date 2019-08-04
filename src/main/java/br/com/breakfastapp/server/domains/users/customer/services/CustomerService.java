@@ -1,5 +1,7 @@
 package br.com.breakfastapp.server.domains.users.customer.services;
 
+import br.com.breakfastapp.server.domains.users.address.domains.Address;
+import br.com.breakfastapp.server.domains.users.address.repositories.AddressRepository;
 import br.com.breakfastapp.server.domains.users.customer.domains.Customer;
 import br.com.breakfastapp.server.domains.users.customer.pojos.CustomerPojo;
 import br.com.breakfastapp.server.domains.users.customer.repositories.CustomerRepository;
@@ -15,6 +17,9 @@ public class CustomerService {
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private AddressRepository addressRepository;
 
     /**
      * @apiNote  Customer
@@ -36,6 +41,7 @@ public class CustomerService {
         if(!customer.getPassword().isEmpty()){
             old.setPassword(customer.getPassword());
         }
+        old.setAddresses(customer.getAddresses());
         Customer saved = customerRepository.save(old);
         return new ResponseEntity<>(saved,HttpStatus.OK);
     }
@@ -58,4 +64,25 @@ public class CustomerService {
     }
 
 
+    public ResponseEntity<Customer> deleteAddressByIds(Integer customerId, Integer addressId) {
+        Customer found = customerRepository.findOneById(customerId);
+        Address foundAddress = addressRepository.findOneById(addressId);
+        found.getAddresses().remove(foundAddress);
+
+        Customer saved = customerRepository.save(found);
+        return new ResponseEntity(saved,HttpStatus.OK);
+    }
+
+    public ResponseEntity<Customer> addAddressById(Integer customerId, Address address) {
+        if( !customerRepository.existsById(customerId) ){
+            return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+        }
+        Customer found = customerRepository.findOneById(customerId);
+        Address savedAddress = addressRepository.save(address);
+        found.getAddresses().add(savedAddress);
+
+        Customer saved = customerRepository.save(found);
+
+        return new ResponseEntity<>(saved,HttpStatus.OK);
+    }
 }

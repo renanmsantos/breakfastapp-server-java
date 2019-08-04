@@ -1,5 +1,6 @@
 package br.com.breakfastapp.server.domains.users.customer.domains;
 
+import br.com.breakfastapp.server.domains.users.address.domains.Address;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -7,6 +8,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Calendar;
+import java.util.List;
 
 @Entity
 @Data
@@ -48,5 +50,8 @@ public class Customer {
 
     @Column
     private Boolean active = true;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Address> addresses;
 
 }

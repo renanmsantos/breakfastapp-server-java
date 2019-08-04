@@ -1,5 +1,6 @@
 package br.com.breakfastapp.server.controllers;
 
+import br.com.breakfastapp.server.domains.users.address.domains.Address;
 import br.com.breakfastapp.server.domains.users.customer.domains.Customer;
 import br.com.breakfastapp.server.domains.users.customer.pojos.CustomerPojo;
 import br.com.breakfastapp.server.domains.users.customer.services.CustomerService;
@@ -33,6 +34,19 @@ public class CustomerController {
             customer.setPassword(passwordEncoder.encode(customer.getPassword()));
         }
         return customerService.saveCustomer(customer);
+    }
+
+    @DeleteMapping(value = "/{customerId}/address/{addressId}")
+    public ResponseEntity<Customer> removeAddressFromByIds(
+            @PathVariable(name = "addressId") Integer addressId,
+            @PathVariable(name = "customerId") Integer customerId ){
+        return customerService.deleteAddressByIds(customerId,addressId);
+    }
+
+    @PutMapping(value = "/{customerId}/address")
+    public ResponseEntity<Customer> addAddressById(
+            @PathVariable(name = "customerId") Integer customerId, @RequestBody Address address ){
+        return customerService.addAddressById(customerId,address);
     }
 
     @DeleteMapping(value = "/{id}")

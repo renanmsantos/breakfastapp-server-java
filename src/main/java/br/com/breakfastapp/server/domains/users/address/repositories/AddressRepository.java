@@ -17,6 +17,9 @@ public interface AddressRepository extends JpaRepository<Address,Integer> {
     @Query("select a from Address a where a.active = true ")
     List<Address> findAll();
 
+    @Query("select a from Address a where a.id = :id and a.active = true ")
+    Address findOneById(@Param("id") Integer id);
+
     @Transactional
     @Modifying
     @Query("update Address a set a.active = false where a.id = :id")

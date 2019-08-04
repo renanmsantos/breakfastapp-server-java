@@ -45,7 +45,6 @@ public class Address {
     private Date updatedAt;
 
     @Column
-    @NotNull
-    private Boolean active;
+    private Boolean active = true;
 
 }
