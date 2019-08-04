@@ -1,5 +1,6 @@
-package br.com.breakfastapp.server.domains.products;
+package br.com.breakfastapp.server.domains.products.domains;
 
+import br.com.breakfastapp.server.domains.orders.PurchaseOrder;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -10,18 +11,24 @@ import java.util.Date;
 
 @Entity
 @Data
-public class Category {
+public class ProductPurchaseOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
-    @NotNull
-    private String name;
+    private Integer quantity;
 
-    @Column
-    private String description;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    @NotNull
+    private Product product;
+
+    @ManyToOne
+    @JoinColumn(name = "purchase_order_id")
+    @NotNull
+    private PurchaseOrder purchaseOrder;
 
     @Column(updatable = false)
     @CreationTimestamp
@@ -30,9 +37,5 @@ public class Category {
     @Column
     @UpdateTimestamp
     private Date updatedAt;
-
-    @Column
-    @NotNull
-    private Boolean active;
 
 }

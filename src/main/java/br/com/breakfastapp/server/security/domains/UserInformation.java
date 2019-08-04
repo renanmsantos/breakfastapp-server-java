@@ -1,7 +1,5 @@
 package br.com.breakfastapp.server.security.domains;
 
-import br.com.breakfastapp.server.domains.users.customer.domains.Customer;
-
 public class UserInformation {
     private String token;
     private Object customer;

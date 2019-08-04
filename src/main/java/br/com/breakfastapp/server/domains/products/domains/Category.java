@@ -1,6 +1,5 @@
-package br.com.breakfastapp.server.domains.products;
+package br.com.breakfastapp.server.domains.products.domains;
 
-import br.com.breakfastapp.server.domains.users.partner.domains.Partner;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -11,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @Data
-public class Product {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,30 +21,7 @@ public class Product {
     private String name;
 
     @Column
-    private Float price;
-
-    @Column
-    private String urlImage;
-
-    @Column
-    private Integer daysProduce;
-
-    @Column
-    private Integer quantity;
-
-    @Column
-    @NotNull
-    private Boolean available;
-
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    @NotNull
-    private Category category;
-
-    @ManyToOne
-    @JoinColumn(name = "partner_id")
-    @NotNull
-    private Partner partner;
+    private String description;
 
     @Column(updatable = false)
     @CreationTimestamp

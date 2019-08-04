@@ -1,7 +1,6 @@
 package br.com.breakfastapp.server.domains.users.address.repositories;
 
 import br.com.breakfastapp.server.domains.users.address.domains.Address;
-import br.com.breakfastapp.server.domains.users.customer.domains.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

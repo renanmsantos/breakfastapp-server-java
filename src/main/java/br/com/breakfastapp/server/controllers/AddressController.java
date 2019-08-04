@@ -2,12 +2,10 @@ package br.com.breakfastapp.server.controllers;
 
 import br.com.breakfastapp.server.domains.users.address.domains.Address;
 import br.com.breakfastapp.server.domains.users.address.services.AddressService;
-import br.com.breakfastapp.server.domains.users.customer.domains.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
