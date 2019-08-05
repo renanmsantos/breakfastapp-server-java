@@ -2,7 +2,6 @@ package br.com.breakfastapp.server.controllers;
 
 import br.com.breakfastapp.server.domains.products.domains.Product;
 import br.com.breakfastapp.server.domains.products.services.ProductService;
-import br.com.breakfastapp.server.domains.users.customer.pojos.CustomerPojo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -33,6 +33,6 @@ public class Segment {
 
     @Column
     @NotNull
-    private Boolean active;
+    private Boolean active = true;
 
 }

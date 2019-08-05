@@ -33,6 +33,6 @@ public class Category {
 
     @Column
     @NotNull
-    private Boolean active;
+    private Boolean active = true;
 
 }

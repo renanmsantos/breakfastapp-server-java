@@ -63,6 +63,6 @@ public class Partner {
 
     @Column
     @NotNull
-    private Boolean active;
+    private Boolean active = true;
 
 }

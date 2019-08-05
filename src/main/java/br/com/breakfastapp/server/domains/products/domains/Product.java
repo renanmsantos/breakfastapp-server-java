@@ -57,6 +57,6 @@ public class Product {
 
     @Column
     @NotNull
-    private Boolean active;
+    private Boolean active = true;
 
 }

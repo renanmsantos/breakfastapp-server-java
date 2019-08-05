@@ -16,6 +16,4 @@ public class CustomerPojo {
     private String password;
 
     private String cellphone;
-
-    private List<Address> addresses;
 }

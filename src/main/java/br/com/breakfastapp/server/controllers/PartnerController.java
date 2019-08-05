@@ -19,7 +19,7 @@ public class PartnerController {
     private PartnerService partnerService;
 
     /**
-     * @apiNote:  ROOT - Partner
+     * @apiNote:  Partner
      **/
 
     @PostMapping

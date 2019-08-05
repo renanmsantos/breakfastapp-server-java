@@ -44,9 +44,9 @@ public class CustomerController {
     }
 
     @PutMapping(value = "/{customerId}/address")
-    public ResponseEntity<Customer> addAddressById(
+    public ResponseEntity<Customer> createAddressWithCustomerId(
             @PathVariable(name = "customerId") Integer customerId, @RequestBody Address address ){
-        return customerService.addAddressById(customerId,address);
+        return customerService.createAddressWithCustomerId(customerId,address);
     }
 
     @DeleteMapping(value = "/{id}")

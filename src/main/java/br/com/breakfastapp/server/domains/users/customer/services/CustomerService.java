@@ -21,10 +21,6 @@ public class CustomerService {
     @Autowired
     private AddressRepository addressRepository;
 
-    /**
-     * @apiNote  Customer
-     **/
-
     public ResponseEntity<Customer> createCustomer(Customer customer) {
         Customer created = customerRepository.save(customer);
         return new ResponseEntity(created, HttpStatus.CREATED);
@@ -41,7 +37,6 @@ public class CustomerService {
         if(!customer.getPassword().isEmpty()){
             old.setPassword(customer.getPassword());
         }
-        old.setAddresses(customer.getAddresses());
         Customer saved = customerRepository.save(old);
         return new ResponseEntity<>(saved,HttpStatus.OK);
     }
@@ -73,7 +68,7 @@ public class CustomerService {
         return new ResponseEntity(saved,HttpStatus.OK);
     }
 
-    public ResponseEntity<Customer> addAddressById(Integer customerId, Address address) {
+    public ResponseEntity<Customer> createAddressWithCustomerId(Integer customerId, Address address) {
         if( !customerRepository.existsById(customerId) ){
             return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
         }
