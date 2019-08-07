@@ -1,1 +1,1 @@
-web: java -jar target/server-java-1.0.0.jar
+web: spring-boot:run
