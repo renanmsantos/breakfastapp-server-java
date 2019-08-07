@@ -28,20 +28,4 @@ public class OrderController {
         return purchaseOrderService.findAllPurchaseOrders();
     }
 
-    @GetMapping(value = "/customers/{customerId}")
-    public ResponseEntity<PurchaseOrder> getOnePurchaseOrderByCustomerId(@PathVariable(name = "customerId") Integer customerId ){
-        return purchaseOrderService.findOnePurchaseOrderByCustomerId(customerId);
-    }
-
-    @PostMapping(value = "/{purchaseOrderId}/products")
-    public ResponseEntity<PurchaseOrderProduct> createPurchaseOrderProduct(@PathVariable(name = "purchaseOrderId") Integer purchaseOrderId ,
-                                                                           @RequestBody List<PurchaseOrderProductPojo> listPurchaseOrderProductPojo ){
-        return purchaseOrderService.createPurchaseOrderProduct(listPurchaseOrderProductPojo, purchaseOrderId);
-    }
-
-    @GetMapping(value = "/{purchaseOrderId}/products")
-    public ResponseEntity<List<PurchaseOrderProduct>> getAllPurchaseOrderProductByPruchaseOrderId(@PathVariable(name = "purchaseOrderId") Integer purchaseOrderId ){
-        return purchaseOrderService.findAllPurchaseOrderProductByPurchaseOrderId(purchaseOrderId);
-    }
-
 }
