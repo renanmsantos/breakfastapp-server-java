@@ -1,0 +1,5 @@
+{
+  "name": "BreakfastApp!",
+  "description": "The best service to BreakfastApp.",
+  "addons": [ "heroku-postgresql" ]
+}
