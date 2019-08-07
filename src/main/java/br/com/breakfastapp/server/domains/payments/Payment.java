@@ -1,6 +1,6 @@
 package br.com.breakfastapp.server.domains.payments;
 
-import br.com.breakfastapp.server.domains.orders.PurchaseOrder;
+import br.com.breakfastapp.server.domains.orders.domains.PurchaseOrder;
 import br.com.breakfastapp.server.domains.payments.enuns.PaymentStatus;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;

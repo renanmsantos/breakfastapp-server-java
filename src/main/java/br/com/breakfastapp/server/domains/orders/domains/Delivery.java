@@ -1,34 +1,36 @@
-package br.com.breakfastapp.server.domains.products.domains;
+package br.com.breakfastapp.server.domains.orders.domains;
 
-import br.com.breakfastapp.server.domains.orders.PurchaseOrder;
+import br.com.breakfastapp.server.domains.orders.enuns.DeliveryStatus;
+import br.com.breakfastapp.server.domains.users.address.domains.Address;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
 @Data
-public class ProductPurchaseOrder {
+public class Delivery {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
-    private Integer quantity;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private DeliveryStatus deliveryStatus;
+
+    @Column
+    private LocalDateTime scheduledDate;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "address_id")
     @NotNull
-    private Product product;
-
-    @ManyToOne
-    @JoinColumn(name = "purchase_order_id")
-    @NotNull
-    private PurchaseOrder purchaseOrder;
+    private Address address;
 
     @Column(updatable = false)
     @CreationTimestamp

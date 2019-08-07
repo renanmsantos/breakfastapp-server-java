@@ -1,8 +1,6 @@
-package br.com.breakfastapp.server.domains.orders;
+package br.com.breakfastapp.server.domains.orders.domains;
 
-import br.com.breakfastapp.server.domains.orders.enuns.PurchaseOrderStatus;
 import br.com.breakfastapp.server.domains.users.customer.domains.Customer;
-import br.com.breakfastapp.server.domains.users.partner.domains.Partner;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -13,30 +11,36 @@ import java.util.Date;
 
 @Entity
 @Data
-public class PurchaseOrder {
+public class Evaluation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    private PurchaseOrderStatus purchaseOrderStatus;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
     @NotNull
     private Customer customer;
 
-    @ManyToOne
-    @JoinColumn(name = "partner_id")
+    @OneToOne
+    @JoinColumn(name = "purchase_order_id")
     @NotNull
-    private Partner partner;
+    private PurchaseOrder purchaseOrder;
 
-    @ManyToOne
-    @JoinColumn(name = "delivery_id")
-    private Delivery delivery;
+    @Column
+    @NotNull
+    private Integer gradeService;
+
+    @Column
+    @NotNull
+    private Integer gradeDelivery;
+
+    @Column
+    @NotNull
+    private Integer gradeProduct;
+
+    @Column
+    private String comments;
 
     @Column(updatable = false)
     @CreationTimestamp
