@@ -1,6 +1,7 @@
 package br.com.breakfastapp.server.controllers;
 
 import br.com.breakfastapp.server.domains.products.domains.Product;
+import br.com.breakfastapp.server.domains.products.pojos.ProductPojo;
 import br.com.breakfastapp.server.domains.products.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +18,8 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping
-    public ResponseEntity<Product> createCustomer(@RequestBody @Valid Product product ){
+    public ResponseEntity<Product> createProduct(@RequestBody @Valid ProductPojo product ){
         return productService.createProduct(product);
-    }
-
-    @PutMapping
-    public ResponseEntity<Product> saveCustomer(@RequestBody Product product ){
-        return productService.saveProduct(product);
     }
 
     @DeleteMapping(value = "/{id}")

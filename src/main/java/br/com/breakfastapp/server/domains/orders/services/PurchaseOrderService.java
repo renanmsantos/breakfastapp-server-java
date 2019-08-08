@@ -50,11 +50,11 @@ public class PurchaseOrderService {
     private DeliveryRepository deliveryRepository;
 
 
-    public ResponseEntity<PurchaseOrder> createPurchaseOrder(PurchaseOrderPojo purchaseOrder) {
+    public ResponseEntity<PurchaseOrder> createPurchaseOrder(PurchaseOrderPojo purchaseOrderPojo) {
 
-        Customer customerFound = customerRepository.findOneById(purchaseOrder.getCustomerId());
-        Partner partnerFound = partnerRepository.findOneById(purchaseOrder.getPartnerId());
-        Address addressFound = addressRepository.findOneById(purchaseOrder.getAddressId());
+        Customer customerFound = customerRepository.findOneById(purchaseOrderPojo.getCustomerId());
+        Partner partnerFound = partnerRepository.findOneById(purchaseOrderPojo.getPartnerId());
+        Address addressFound = addressRepository.findOneById(purchaseOrderPojo.getAddressId());
 
         Delivery newDelivery = new Delivery();
         newDelivery.setAddress(addressFound);
@@ -66,47 +66,29 @@ public class PurchaseOrderService {
         newPurchaseOrder.setCustomer(customerFound);
         newPurchaseOrder.setPartner(partnerFound);
         newPurchaseOrder.setDelivery(deliveryReturned);
-
         newPurchaseOrder.setPurchaseOrderStatus(PurchaseOrderStatus.OPEN);
+        newPurchaseOrder.setTotalPrice(purchaseOrderPojo.getTotalPrice());
         PurchaseOrder created = purchaseOrderRepository.save(newPurchaseOrder);
-        return new ResponseEntity(created, HttpStatus.CREATED);
-    }
-    public ResponseEntity<PurchaseOrderProduct> createPurchaseOrderProduct(List<PurchaseOrderProductPojo> ListPurchaseOrderProductPojo, Integer purchaseOrderId) {
 
-        PurchaseOrder purchaseOrderFound = purchaseOrderRepository.findOneById(purchaseOrderId);
-
-        ListPurchaseOrderProductPojo.forEach(purchaseOrderProductPojo -> {
-            Product productFound = productRepository.findOneById(purchaseOrderProductPojo.getProductId());
+        product: purchaseOrderPojo.getProducts().forEach( productPojo -> {
             PurchaseOrderProduct newPurchaseOrderProduct = new PurchaseOrderProduct();
-            newPurchaseOrderProduct.setPurchaseOrder(purchaseOrderFound);
-            newPurchaseOrderProduct.setProduct(productFound);
-            newPurchaseOrderProduct.setQuantity(purchaseOrderProductPojo.getQuantity());
+            newPurchaseOrderProduct.setPurchaseOrder(created);
+            newPurchaseOrderProduct.setQuantity(productPojo.getQuantity());
+            Product productToInsert = productRepository.findOneById(productPojo.getProductId());
+            newPurchaseOrderProduct.setProduct(productToInsert);
             purchaseOrderProductRepository.save(newPurchaseOrderProduct);
         });
 
-        List<PurchaseOrderProduct> list = purchaseOrderProductRepository.findAllByPurchaseOrderId(purchaseOrderId);
-
-        return new ResponseEntity(list, HttpStatus.CREATED);
+        return new ResponseEntity(created, HttpStatus.CREATED);
     }
-
 
     public ResponseEntity<List<PurchaseOrder>> findAllPurchaseOrders(){
         List<PurchaseOrder> returnedList = purchaseOrderRepository.findAll();
         return new ResponseEntity<>(returnedList, HttpStatus.OK);
     }
 
-    public ResponseEntity<List<PurchaseOrderProduct>> findAllPurchaseOrderProductByPurchaseOrderId(Integer purchaseOrderId) {
-        List<PurchaseOrderProduct> found = purchaseOrderProductRepository.findAllByPurchaseOrderId(purchaseOrderId);
-        return new ResponseEntity<>(found,HttpStatus.OK);
+    public ResponseEntity<List<PurchaseOrder>> findAllPurchaseOrdersByCustomerId(Integer customerId) {
+        List<PurchaseOrder> returnedList = purchaseOrderRepository.findAllByCustomerId(customerId);
+        return new ResponseEntity<>(returnedList, HttpStatus.OK);
     }
-
-    public ResponseEntity<PurchaseOrder> findOnePurchaseOrderByCustomerId(Integer customerId) {
-        PurchaseOrder found = purchaseOrderRepository.findOneByCustomerId(customerId);
-        return new ResponseEntity<>(found,HttpStatus.OK);
-    }
-
-
-
-
-
 }

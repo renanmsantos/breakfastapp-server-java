@@ -6,14 +6,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface PurchaseOrderRepository extends JpaRepository<PurchaseOrder,Integer> {
-
-    @Query("select p from PurchaseOrder p where p.customer.id = :customerId")
-    PurchaseOrder findOneByCustomerId(@Param("customerId") Integer customerId);
 
     @Query("select p from PurchaseOrder p where p.id = :purchaseOrderId")
     PurchaseOrder findOneById(@Param("purchaseOrderId") Integer purchaseOrderId);
 
-
+    @Query("select p from PurchaseOrder p where p.customer.id = :customerId order by p.id desc")
+    List<PurchaseOrder> findAllByCustomerId(Integer customerId);
 }

@@ -1,39 +1,22 @@
+server:
+  servlet:
+    context-path: /server-java
+  port: 8080
+
 spring:
-  profiles: local
-
-  server:
-    servlet:
-      context-path: /server-java
-    port: 8080
-
   datasource:
     driver-class-name: org.postgresql.Driver
     url:  jdbc:postgresql://localhost:5432/breakfastapp-server-java
     username: postgres
     password: postgres
+    initialization-mode: always
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
   jackson:
     serialization.write-dates-as-timestamps: false
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: America/Sao_Paulo
 
----
-spring:
-  profiles: production
 
-  server:
-    servlet:
-    port: 8080
-
-  datasource:
-    url:  ${JDBC_DATABASE_URL:}
-  jpa:
-    hibernate:
-      ddl-auto: create-drop
-  jackson:
-    serialization.write-dates-as-timestamps: false
-    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: America/Sao_Paulo

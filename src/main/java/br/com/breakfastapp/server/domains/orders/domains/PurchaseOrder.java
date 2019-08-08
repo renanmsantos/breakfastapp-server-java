@@ -38,6 +38,10 @@ public class PurchaseOrder {
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
+    @Column
+    @NotNull
+    private Float totalPrice;
+
     @Column(updatable = false)
     @CreationTimestamp
     private Date createdAt;

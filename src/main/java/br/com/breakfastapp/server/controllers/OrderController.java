@@ -23,6 +23,11 @@ public class OrderController {
         return purchaseOrderService.createPurchaseOrder(purchaseOrder);
     }
 
+    @GetMapping(value = "/customers/{customerId}")
+    public ResponseEntity<List<PurchaseOrder>> getAllPurchaseOrdersByCustomerId( @PathVariable(value = "customerId") Integer customerId ){
+        return purchaseOrderService.findAllPurchaseOrdersByCustomerId(customerId);
+    }
+
     @GetMapping
     public ResponseEntity<List<PurchaseOrder>> getAllPurchaseOrders(){
         return purchaseOrderService.findAllPurchaseOrders();

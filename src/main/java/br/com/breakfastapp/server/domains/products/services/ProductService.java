@@ -1,7 +1,12 @@
 package br.com.breakfastapp.server.domains.products.services;
 
+import br.com.breakfastapp.server.domains.products.domains.Category;
 import br.com.breakfastapp.server.domains.products.domains.Product;
+import br.com.breakfastapp.server.domains.products.pojos.ProductPojo;
+import br.com.breakfastapp.server.domains.products.repositories.CategoryRepository;
 import br.com.breakfastapp.server.domains.products.repositories.ProductRepository;
+import br.com.breakfastapp.server.domains.users.partner.domains.Partner;
+import br.com.breakfastapp.server.domains.users.partner.repositories.PartnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,26 +20,29 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public ResponseEntity<Product> createProduct(Product product) {
-        Product created = productRepository.save(product);
+    @Autowired
+    private CategoryRepository categoryRepository;
+
+    @Autowired
+    private PartnerRepository partnerRepository;
+
+    public ResponseEntity<Product> createProduct(ProductPojo productPojo) {
+        Product newProduct = new Product();
+        newProduct.setName(productPojo.getName());
+        newProduct.setAvailable(productPojo.getAvailable());
+        newProduct.setQuantity(productPojo.getQuantity());
+        newProduct.setDaysProduce(productPojo.getDaysProduce());
+        newProduct.setUrlImage(productPojo.getUrlImage());
+        newProduct.setPrice(productPojo.getPrice());
+
+        Category foundCategory = categoryRepository.findOneById(productPojo.getCategoryId());
+        newProduct.setCategory(foundCategory);
+
+        Partner foundPartner = partnerRepository.findOneById(productPojo.getPartnerId());
+        newProduct.setPartner(foundPartner);
+
+        Product created = productRepository.save(newProduct);
         return new ResponseEntity(created, HttpStatus.CREATED);
-    }
-
-    public ResponseEntity<Product> saveProduct(Product product){
-       if( !productRepository.existsById(product.getId()) ){
-           return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
-       }
-        Product old = productRepository.findOneById(product.getId());
-        old.setName(product.getName());
-        old.setPrice(product.getPrice());
-        old.setUrlImage(product.getUrlImage());
-        old.setDaysProduce(product.getDaysProduce());
-        old.setQuantity(product.getQuantity());
-        old.setAvailable(product.getAvailable());
-        old.setCategory(product.getCategory());
-
-        Product saved = productRepository.save(old);
-        return new ResponseEntity<>(saved,HttpStatus.OK);
     }
 
     public ResponseEntity deleteProductById(Integer id) {
