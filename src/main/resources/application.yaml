@@ -20,7 +20,8 @@ server:
 spring:
   profiles: production
   datasource:
-    url: ${JDBC_DATABASE_URL:}
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgres://wpxvsdikomcdga:9e935dfa40d09d0bc1420c998dc9971d3aab447bdb2dadf1102542919d1e195f@ec2-174-129-226-234.compute-1.amazonaws.com:5432/dcfa1d0hprkfl
 server:
   port: 5000
 
