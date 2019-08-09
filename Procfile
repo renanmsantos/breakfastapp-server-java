@@ -1,1 +1,1 @@
-web: java -jar target/server-java-1.0.0.jar -Dproduction
+web: mvn spring-boot:run -Dspring.profiles.active=production

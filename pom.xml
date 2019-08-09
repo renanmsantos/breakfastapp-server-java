@@ -92,14 +92,11 @@
             <properties>
                 <activatedProperties>local</activatedProperties>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
         </profile>
         <profile>
-            <id>prod</id>
+            <id>production</id>
             <properties>
-                <activatedProperties>prod</activatedProperties>
+                <activatedProperties>production</activatedProperties>
             </properties>
         </profile>
     </profiles>
