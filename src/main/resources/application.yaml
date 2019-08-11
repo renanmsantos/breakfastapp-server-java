@@ -1,10 +1,14 @@
+server:
+  port: 8082
+
+---
 spring:
   profiles: local
   datasource:
     driver-class-name: org.postgresql.Driver
     url:  jdbc:postgresql://localhost:5432/breakfastapp-server-java
     username: postgres
-    password: postgres
+    password: {$BD_PASS:}
     initialization-mode: always
   jpa:
     hibernate:
@@ -14,23 +18,21 @@ spring:
     serialization.write-dates-as-timestamps: false
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: America/Sao_Paulo
-server:
-  port: 8082
 ---
 spring:
   profiles: production
   datasource:
-    url: ${JDBC_DATABASE_URL:}
+    url: jdbc:postgresql://167.99.53.122:5432/breakfastapp-server-java
+    username: postgres
+    password: breakfastapp-pass@!
     initialization-mode: always
-    jpa:
-      hibernate:
-        ddl-auto: create-drop
-      show-sql: false
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
     jackson:
       serialization.write-dates-as-timestamps: false
       date-format: yyyy-MM-dd HH:mm:ss
       time-zone: America/Sao_Paulo
-server:
-  port: 5000
 
 
