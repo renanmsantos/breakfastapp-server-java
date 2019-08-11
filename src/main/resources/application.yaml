@@ -21,6 +21,15 @@ spring:
   profiles: production
   datasource:
     url: ${JDBC_DATABASE_URL:}
+    initialization-mode: always
+    jpa:
+      hibernate:
+        ddl-auto: create-drop
+      show-sql: false
+    jackson:
+      serialization.write-dates-as-timestamps: false
+      date-format: yyyy-MM-dd HH:mm:ss
+      time-zone: America/Sao_Paulo
 server:
   port: 5000
 
