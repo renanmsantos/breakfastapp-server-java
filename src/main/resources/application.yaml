@@ -1,12 +1,29 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url:  jdbc:postgres://pnfbzsmfdcwfth:29583406c08297f87f0f064d3816c656178a2c4cd6120ed393f03a6cb26f8bc6@ec2-54-221-238-248.compute-1.amazonaws.com:5432/dajt0nih31d37d
+    url: jdbc:postgres://pnfbzsmfdcwfth:29583406c08297f87f0f064d3816c656178a2c4cd6120ed393f03a6cb26f8bc6@ec2-54-221-238-248.compute-1.amazonaws.com:5432/dajt0nih31d37d
     initialization-mode: always
   jpa:
     hibernate:
       ddl-auto: create-drop
-    show-sql: false
+    show-sql: true
+  jackson:
+    serialization.write-dates-as-timestamps: false
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: America/Sao_Paulo
+---
+spring:
+  profiles: local
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/breakfastapp-server-java
+    initialization-mode: always
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
   jackson:
     serialization.write-dates-as-timestamps: false
     date-format: yyyy-MM-dd HH:mm:ss
