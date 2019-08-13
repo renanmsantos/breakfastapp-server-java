@@ -33,7 +33,7 @@ insert into product (active, available, category_id, created_at, days_produce, n
 insert into product (active, available, category_id, created_at, days_produce, name, partner_id, price, quantity, updated_at, url_image)
     values (true, true, 1, null, 2, 'Bolo de recheado', 2, 55.0, 20, null, 'https://api.adorable.io/avatars/50/abott@adorable3.png');
 insert into product (active, available, category_id, created_at, days_produce, name, partner_id, price, quantity, updated_at, url_image)
-    values (true, true, 1, null, 2, 'Cento de salgado de frango', 1, 100.0, 20, null, 'https://api.adorable.io/avatars/50/abott@adorable5.png');
+    values (true, true, 1, null, 2, 'Salgado de frango', 1, 100.0, 20, null, 'https://api.adorable.io/avatars/50/abott@adorable5.png');
 insert into product (active, available, category_id, created_at, days_produce, name, partner_id, price, quantity, updated_at, url_image)
-    values (true, true, 1, null, 2, 'Cento de salgado de carne', 1, 100.0, 20, null, 'https://api.adorable.io/avatars/50/abott@adorable3.png');
+    values (true, true, 1, null, 2, 'Salgado de carne', 1, 100.0, 20, null, 'https://api.adorable.io/avatars/50/abott@adorable3.png');
 

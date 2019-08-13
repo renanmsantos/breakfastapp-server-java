@@ -7,6 +7,7 @@ import br.com.breakfastapp.server.domains.orders.enuns.DeliveryStatus;
 import br.com.breakfastapp.server.domains.orders.enuns.PurchaseOrderStatus;
 import br.com.breakfastapp.server.domains.orders.pojos.PurchaseOrderPojo;
 import br.com.breakfastapp.server.domains.orders.pojos.PurchaseOrderProductPojo;
+import br.com.breakfastapp.server.domains.orders.pojos.PurchaseOrderReturnedPojo;
 import br.com.breakfastapp.server.domains.orders.repositories.DeliveryRepository;
 import br.com.breakfastapp.server.domains.orders.repositories.PurchaseOrderProductRepository;
 import br.com.breakfastapp.server.domains.orders.repositories.PurchaseOrderRepository;
@@ -23,6 +24,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -66,7 +68,7 @@ public class PurchaseOrderService {
         newPurchaseOrder.setCustomer(customerFound);
         newPurchaseOrder.setPartner(partnerFound);
         newPurchaseOrder.setDelivery(deliveryReturned);
-        newPurchaseOrder.setPurchaseOrderStatus(PurchaseOrderStatus.OPEN);
+        newPurchaseOrder.setPurchaseOrderStatus(PurchaseOrderStatus.ABERTO);
         newPurchaseOrder.setTotalPrice(purchaseOrderPojo.getTotalPrice());
         PurchaseOrder created = purchaseOrderRepository.save(newPurchaseOrder);
 
@@ -90,5 +92,23 @@ public class PurchaseOrderService {
     public ResponseEntity<List<PurchaseOrder>> findAllPurchaseOrdersByCustomerId(Integer customerId) {
         List<PurchaseOrder> returnedList = purchaseOrderRepository.findAllByCustomerId(customerId);
         return new ResponseEntity<>(returnedList, HttpStatus.OK);
+    }
+
+    public ResponseEntity<PurchaseOrderReturnedPojo> findPurchaseOrderById(Integer orderId) {
+        PurchaseOrderReturnedPojo returned = new PurchaseOrderReturnedPojo();
+        PurchaseOrder purchaseOrder = purchaseOrderRepository.findOneById(orderId);
+
+        List<PurchaseOrderProduct> allByPurchaseOrderId = purchaseOrderProductRepository.findAllByPurchaseOrderId(orderId);
+        List<Product> finalListProduct = new ArrayList<>();
+        allByPurchaseOrderId.forEach(purchaseOrderProduct -> {
+            Product oneById = productRepository.findOneById(purchaseOrderProduct.getId());
+            oneById.setQuantity(purchaseOrderProduct.getQuantity());
+            finalListProduct.add(oneById);
+        });
+
+        returned.setPurchaseOrder(purchaseOrder);
+        returned.setProducts(finalListProduct);
+
+        return new ResponseEntity<>(returned, HttpStatus.OK);
     }
 }

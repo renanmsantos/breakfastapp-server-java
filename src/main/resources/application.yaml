@@ -28,3 +28,5 @@ spring:
     serialization.write-dates-as-timestamps: false
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: America/Sao_Paulo
+server:
+  port: 8082

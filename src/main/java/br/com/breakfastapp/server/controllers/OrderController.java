@@ -4,6 +4,7 @@ import br.com.breakfastapp.server.domains.orders.domains.PurchaseOrder;
 import br.com.breakfastapp.server.domains.orders.domains.PurchaseOrderProduct;
 import br.com.breakfastapp.server.domains.orders.pojos.PurchaseOrderPojo;
 import br.com.breakfastapp.server.domains.orders.pojos.PurchaseOrderProductPojo;
+import br.com.breakfastapp.server.domains.orders.pojos.PurchaseOrderReturnedPojo;
 import br.com.breakfastapp.server.domains.orders.services.PurchaseOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,11 @@ public class OrderController {
     @GetMapping(value = "/customers/{customerId}")
     public ResponseEntity<List<PurchaseOrder>> getAllPurchaseOrdersByCustomerId( @PathVariable(value = "customerId") Integer customerId ){
         return purchaseOrderService.findAllPurchaseOrdersByCustomerId(customerId);
+    }
+
+    @GetMapping(value = "/{orderId}")
+    public ResponseEntity<PurchaseOrderReturnedPojo> getPurchaseOrderById(@PathVariable(value = "orderId") Integer orderId ){
+        return purchaseOrderService.findPurchaseOrderById(orderId);
     }
 
     @GetMapping
